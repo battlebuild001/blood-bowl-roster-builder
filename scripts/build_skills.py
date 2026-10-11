@@ -12,6 +12,8 @@ from lxml import html
 tree = html.parse('/tmp/bb2025-skills.html')
 source = 'https://bloodbowlbase.ru/bb2025/core_rules/skills_and_traits/'
 output = {}
+previous_path = Path('data/skills-2025.json')
+previous = json.loads(previous_path.read_text()) if previous_path.exists() else {}
 categories = {
     'agility': 'Agility', 'devious': 'Devious', 'general': 'General',
     'mutation': 'Mutation', 'passing': 'Passing', 'strength': 'Strength',
@@ -30,6 +32,9 @@ for heading in tree.xpath('//h4[@id]'):
         sibling = sibling.getnext()
     assert parts, skill_id
     output[skill_id] = {'title': title.title(), 'category': category, 'kind': kind, 'paragraphs': parts, 'source': source + '#' + skill_id}
+    if previous.get(skill_id, {}).get('paragraphs') == parts and len(previous[skill_id].get('paragraphsKo', [])) == len(parts):
+        output[skill_id]['paragraphsKo'] = previous[skill_id]['paragraphsKo']
+        output[skill_id]['titleKo'] = previous[skill_id].get('titleKo', title.title())
 assert len(output) == 108, len(output)
 teams = json.loads(Path('data/teams-2025.json').read_text())
 needed = {skill[1] for team in teams.values() for p in team['positions'] for skill in p[6]}

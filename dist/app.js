@@ -55,9 +55,9 @@ function renderPositions(){
 }
 function openSkill(id){
   const skill=SKILLS[id];if(!skill)return;
-  $('skill-dialog-title').textContent=skill.title;
-  $('skill-dialog-kind').textContent=skill.kind==='active'?'ACTIVE · 액티브':'PASSIVE · 패시브';
-  $('skill-dialog-body').innerHTML=skill.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('');
+  $('skill-dialog-title').textContent=skill.titleKo;
+  $('skill-dialog-kind').textContent=`${skill.title} · ${skill.kind==='active'?'ACTIVE · 액티브':'PASSIVE · 패시브'}`;
+  $('skill-dialog-body').innerHTML=skill.paragraphsKo.map(p=>`<p>${escapeHTML(p)}</p>`).join('')+`<details class="skill-original"><summary>영문 원문 보기</summary>${skill.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</details>`;
   $('skill-dialog-source').href=skill.source;
   $('skill-dialog').showModal();
 }
@@ -199,23 +199,23 @@ function renderSpecial(){
   if(toc.scrollWidth>toc.clientWidth){toc.scrollLeft+=active.getBoundingClientRect().left-toc.getBoundingClientRect().left-(toc.clientWidth-active.clientWidth)/2}
 }
 function renderSkillDictionary(){
-  $('reference-content').innerHTML=`<div class="dictionary-intro"><span class="section-index">SKILLS & TRAITS / BB2025</span><h2>스킬 사전</h2><p>스킬과 특성 ${Object.keys(SKILLS).length}개를 이름이나 규칙 문구로 찾을 수 있습니다. 상세 내용은 BB2025 영문 원문을 그대로 표시합니다.</p></div><div class="dictionary-controls"><label for="skill-search">스킬 검색</label><input id="skill-search" type="search" autocomplete="off" placeholder="예: Dodge, Block, Loner" value="${escapeHTML(skillQuery)}"><div class="dictionary-filters" id="dictionary-filters" role="group" aria-label="스킬 분류"></div></div><div class="dictionary-layout"><aside class="dictionary-list-panel" aria-label="스킬 목록"><div class="dictionary-count" id="dictionary-count"></div><div class="dictionary-list" id="dictionary-list"></div></aside><article class="guide-article dictionary-detail" id="dictionary-detail" aria-live="polite"></article></div>`;
+  $('reference-content').innerHTML=`<div class="dictionary-intro"><span class="section-index">SKILLS & TRAITS / BB2025</span><h2>스킬 사전</h2><p>스킬과 특성 ${Object.keys(SKILLS).length}개를 이름이나 한국어 규칙 문구로 찾을 수 있습니다. 영문 원문도 함께 확인할 수 있습니다.</p></div><div class="dictionary-controls"><label for="skill-search">스킬 검색</label><input id="skill-search" type="search" autocomplete="off" placeholder="예: Dodge, Block, 재굴림" value="${escapeHTML(skillQuery)}"><div class="dictionary-filters" id="dictionary-filters" role="group" aria-label="스킬 분류"></div></div><div class="dictionary-layout"><aside class="dictionary-list-panel" aria-label="스킬 목록"><div class="dictionary-count" id="dictionary-count"></div><div class="dictionary-list" id="dictionary-list"></div></aside><article class="guide-article dictionary-detail" id="dictionary-detail" aria-live="polite"></article></div>`;
   renderSkillResults();
 }
 function renderSkillResults(){
   const all=Object.entries(SKILLS).sort((a,b)=>a[1].title.localeCompare(b[1].title,'en'));
   $('dictionary-filters').innerHTML=SKILL_CATEGORIES.map(([id,label])=>`<button type="button" data-skill-category="${id}" class="${skillCategory===id?'active':''}" aria-pressed="${skillCategory===id}">${label} <span>${id==='All'?all.length:all.filter(([,skill])=>skill.category===id).length}</span></button>`).join('');
   const query=skillQuery.trim().toLocaleLowerCase();
-  const filtered=all.filter(([,skill])=>(skillCategory==='All'||skill.category===skillCategory)&&(!query||skill.title.toLocaleLowerCase().includes(query)||skill.paragraphs.some(p=>p.toLocaleLowerCase().includes(query))));
+  const filtered=all.filter(([,skill])=>(skillCategory==='All'||skill.category===skillCategory)&&(!query||skill.title.toLocaleLowerCase().includes(query)||skill.titleKo.toLocaleLowerCase().includes(query)||skill.paragraphs.some(p=>p.toLocaleLowerCase().includes(query))||skill.paragraphsKo.some(p=>p.toLocaleLowerCase().includes(query))));
   $('dictionary-count').textContent=`${filtered.length} / ${all.length}개 항목`;
   if(!filtered.some(([id])=>id===selectedSkillId))selectedSkillId=filtered[0]?.[0]||'';
-  $('dictionary-list').innerHTML=filtered.length?filtered.map(([id,skill])=>`<button type="button" data-dictionary-skill="${id}" class="${id===selectedSkillId?'active':''}" aria-current="${id===selectedSkillId?'true':'false'}"><strong>${escapeHTML(skill.title)}</strong><span>${escapeHTML(SKILL_CATEGORIES.find(([key])=>key===skill.category)?.[1]||skill.category)} · ${skill.kind==='active'?'액티브':'패시브'}</span></button>`).join(''):'<p class="dictionary-empty">검색 결과가 없습니다. 이름이나 규칙 문구를 바꿔 보세요.</p>';
+  $('dictionary-list').innerHTML=filtered.length?filtered.map(([id,skill])=>`<button type="button" data-dictionary-skill="${id}" class="${id===selectedSkillId?'active':''}" aria-current="${id===selectedSkillId?'true':'false'}"><strong>${escapeHTML(skill.titleKo)}</strong><span>${escapeHTML(skill.title)} · ${escapeHTML(SKILL_CATEGORIES.find(([key])=>key===skill.category)?.[1]||skill.category)}</span></button>`).join(''):'<p class="dictionary-empty">검색 결과가 없습니다. 이름이나 규칙 문구를 바꿔 보세요.</p>';
   renderSkillDetail();
 }
 function renderSkillDetail(){
   const skill=SKILLS[selectedSkillId];
   $('dictionary-list').querySelectorAll('[data-dictionary-skill]').forEach(button=>{const active=button.dataset.dictionarySkill===selectedSkillId;button.classList.toggle('active',active);button.setAttribute('aria-current',String(active))});
-  $('dictionary-detail').innerHTML=skill?`<div class="guide-kicker">${escapeHTML(skill.category.toUpperCase())} / ${skill.kind==='active'?'ACTIVE':'PASSIVE'}</div><h2>${escapeHTML(skill.title)}</h2><p class="dictionary-kind">${skill.category==='Trait'?'특성':'스킬'} · ${escapeHTML(SKILL_CATEGORIES.find(([id])=>id===skill.category)?.[1]||skill.category)} · ${skill.kind==='active'?'액티브':'패시브'}</p><div class="dictionary-paragraphs">${skill.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</div><div class="guide-article-foot"><a class="guide-source" href="${skill.source}" target="_blank" rel="noopener">BB2025 원문 보기 ↗</a><span>Blood Bowl Base</span></div>`:'<div class="dictionary-detail-empty">표시할 항목이 없습니다.</div>';
+  $('dictionary-detail').innerHTML=skill?`<div class="guide-kicker">${escapeHTML(skill.category.toUpperCase())} / ${skill.kind==='active'?'ACTIVE':'PASSIVE'}</div><h2>${escapeHTML(skill.titleKo)}</h2><p class="dictionary-english">${escapeHTML(skill.title)}</p><p class="dictionary-kind">${skill.category==='Trait'?'특성':'스킬'} · ${escapeHTML(SKILL_CATEGORIES.find(([id])=>id===skill.category)?.[1]||skill.category)} · ${skill.kind==='active'?'액티브':'패시브'}</p><div class="dictionary-paragraphs">${skill.paragraphsKo.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</div><details class="skill-original"><summary>영문 원문 보기</summary>${skill.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</details><div class="guide-article-foot"><a class="guide-source" href="${skill.source}" target="_blank" rel="noopener">BB2025 원문 보기 ↗</a><span>Blood Bowl Base</span></div>`:'<div class="dictionary-detail-empty">표시할 항목이 없습니다.</div>';
 }
 function renderPicker(){
   $('tier-filters').innerHTML=[1,2,3,4].map(n=>`<button class="tier-filter ${selectedTiers.has(n)?'active':''}" data-tier="${n}" aria-pressed="${selectedTiers.has(n)}" aria-label="등급 ${n}">${['I','II','III','IV'][n-1]}</button>`).join('');

@@ -141,6 +141,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--color-accent);outli
 @media(max-width:800px){.dictionary-layout{grid-template-columns:1fr}.dictionary-list{max-height:255px}.dictionary-detail{min-height:0}}
 @media(max-width:580px){.reference-tabs button{flex:0 0 auto;padding:12px 14px}.top-nav{gap:0}.top-nav button{padding:9px 5px;font-size:10px}.dictionary-controls{padding:14px}.dictionary-detail{padding:23px}}
 @media print{body.reading .dictionary-controls,body.reading .dictionary-list-panel{display:none!important}body.reading .dictionary-layout{display:block}body.reading .dictionary-detail{background:#fff;color:#111;border:0}body.reading .dictionary-paragraphs p{color:#111}}
+.skill-original{border-top:1px solid var(--color-paper-border);margin-top:16px;padding-top:15px;color:#574448}
+.skill-original summary{cursor:pointer;color:#884850;font-size:12px;font-weight:800;list-style-position:inside}
+.skill-original p{font-size:12px;line-height:1.65;margin:13px 0 0;color:#574448}
+.skill-dialog-body .skill-original{margin-top:20px}
+.dictionary-english{font:600 16px Oswald,sans-serif;color:#81525b;margin:0 0 5px}
 
 /* Keep wide data inside its panel instead of allowing a grid child to widen the page. */
 .workspace,.main-column,.sidebar,.panel,.roster-table-wrap,.final-table-wrap{min-width:0}
