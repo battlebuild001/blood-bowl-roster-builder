@@ -64,7 +64,24 @@ function openSkill(id){
 function renderRoster(){
   $('player-count-title').textContent=`${state.players.length} / 16`;$('roster-pill').textContent=`${state.players.length}명`;
   $('empty-roster').hidden=state.players.length>0;
-  $('roster-body').innerHTML=state.players.map((player,i)=>{const p=position(player.pos);const stats=p[5].map((value,index)=>`<span><small>${['MA','ST','AG','PA','AV'][index]}</small>${escapeHTML(value)}</span>`).join('');const skills=p[6].length?p[6].map(([name,id])=>`<button type="button" class="skill-chip" data-skill="${id}" aria-label="${escapeHTML(name)} 규칙 보기">${escapeHTML(name)}</button>`).join(''):'<span class="no-skills">—</span>';return `<tr><td>${String(i+1).padStart(2,'0')}</td><td class="roster-position">${escapeHTML(p[1])}</td><td><div class="roster-stats">${stats}</div></td><td><div class="roster-skills">${skills}</div></td><td class="roster-price">${money(p[3])}</td><td><button class="remove-btn" data-remove="${player.id}" aria-label="${i+1}번 선수 삭제">×</button></td></tr>`}).join('');
+  $('roster-body').innerHTML=rosterRows(true);
+}
+function rosterRows(editable){
+  return state.players.map((player,i)=>{const p=position(player.pos);const stats=p[5].map((value,index)=>`<span><small>${['MA','ST','AG','PA','AV'][index]}</small>${escapeHTML(value)}</span>`).join('');const skills=p[6].length?p[6].map(([name,id])=>`<button type="button" class="skill-chip" data-skill="${id}" aria-label="${escapeHTML(name)} 규칙 보기">${escapeHTML(name)}</button>`).join(''):'<span class="no-skills">—</span>';return `<tr><td>${String(i+1).padStart(2,'0')}</td><td class="roster-position">${escapeHTML(p[1])}</td><td><div class="roster-stats">${stats}</div></td><td><div class="roster-skills">${skills}</div></td><td class="roster-price">${money(p[3])}</td>${editable?`<td><button class="remove-btn" data-remove="${player.id}" aria-label="${i+1}번 선수 삭제">×</button></td>`:''}</tr>`}).join('');
+}
+function canConfirm(){return state.players.length>=11 && state.players.length<=16 && playerCost()+staffCost()<=state.budget}
+function renderFinal(){
+  const name=state.name.trim()||`${team().name} 로스터`;
+  $('final-name').textContent=name;
+  $('final-meta').textContent=`${team().name} · Tier ${team().tier} · ${state.league}`;
+  $('final-count').textContent=`${state.players.length} / 16`;
+  $('final-value').textContent=money(playerCost()+staffCost()-fanCost());
+  $('final-remaining').textContent=money(state.budget-playerCost()-staffCost());
+  $('final-rerolls').textContent=String(state.staff.rerolls);
+  $('final-roster-body').innerHTML=rosterRows(false);
+  const support=[['시작 예산',money(state.budget)],['재굴림',`${state.staff.rerolls}개 · ${money(state.staff.rerolls*team().reroll)}`],['어시스턴트 코치',`${state.staff.assistant}명`],['치어리더',`${state.staff.cheerleaders}명`],['열성 팬',`${state.staff.fans} · ${money(fanCost())}`],['아포세커리',state.staff.apothecary?'1명':'없음']];
+  $('final-support').innerHTML=support.map(([label,value])=>`<div><span>${label}</span><strong>${value}</strong></div>`).join('');
+  $('final-footer-team').textContent=`${name} · ${team().name}`;
 }
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderStaff(){
@@ -82,6 +99,7 @@ function renderBudget(){
   if(remaining<0){status.classList.add('error');$('status-icon').textContent='×';$('status-title').textContent='예산 초과';$('status-detail').textContent=`${money(-remaining)}를 줄여야 합니다.`}
   else if(state.players.length<11){$('status-icon').textContent='!';$('status-title').textContent='로스터를 구성하세요';$('status-detail').textContent=`경기를 시작하려면 선수 ${11-state.players.length}명이 더 필요합니다.`}
   else{status.classList.add('ready');$('status-icon').textContent='✓';$('status-title').textContent='킥오프 준비 완료';$('status-detail').textContent=`선수 ${state.players.length}명 · 남은 예산 ${money(remaining)}`}
+  $('confirm-roster-btn').disabled=!canConfirm();
 }
 function render(){
   $('team-name').value=state.name;$('team-current').textContent=team().name;$('budget-select').value=String(state.budget);
@@ -95,9 +113,11 @@ let includeNAF = true;
 let searchTerm = '';
 function setStage(next){
   stage=next;localStorage.setItem(UI_KEY,next);
-  $('selection-screen').hidden=next!=='selection';$('builder-screen').hidden=next!=='builder';
+  $('selection-screen').hidden=next!=='selection';$('builder-screen').hidden=next!=='builder';$('final-screen').hidden=next!=='final';
   document.body.classList.toggle('picking',next==='selection');
+  document.body.classList.toggle('finalized',next==='final');
   if(next==='selection')renderPicker();
+  if(next==='final')renderFinal();
   window.scrollTo({top:0,behavior:'auto'});
 }
 function renderPicker(){
@@ -127,6 +147,9 @@ $('create-btn').addEventListener('click',()=>{
   render();setStage('builder');
 });
 $('change-team-btn').addEventListener('click',()=>{draft={team:state.team,name:state.name,budget:state.budget,league:state.league};setStage('selection')});
+$('confirm-roster-btn').addEventListener('click',()=>{if(canConfirm())setStage('final')});
+$('final-edit-btn').addEventListener('click',()=>setStage('builder'));
+$('final-print-btn').addEventListener('click',()=>window.print());
 $('team-name').addEventListener('input',e=>{state.name=e.target.value;save()});
 $('budget-select').addEventListener('change',e=>{state.budget=Number(e.target.value);render()});
 document.addEventListener('click',e=>{

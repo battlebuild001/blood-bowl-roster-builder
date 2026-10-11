@@ -61,11 +61,24 @@
         <div class="panel staff-panel"><div class="panel-head"><div><span class="section-index">04 / TEAM SUPPORT</span><h2>팀 운영</h2></div></div><div id="staff-list"></div></div>
 
         <div class="status-card" id="status-card"><div class="status-icon" id="status-icon">!</div><div><strong id="status-title">로스터를 구성하세요</strong><p id="status-detail">경기를 시작하려면 선수가 최소 11명 필요합니다.</p></div></div>
+        <button class="confirm-roster-btn" id="confirm-roster-btn" disabled>로스터 확정 <span>→</span></button>
         <button class="print-btn" id="print-btn">로스터 인쇄 <span>↗</span></button>
         <p class="footnote">팬 제작 보조 도구 · Blood Bowl 2025 시작 로스터 기준. 팀 정보 출처: <a href="https://bloodbowlbase.ru/bb2025/teams/" target="_blank" rel="noopener">Blood Bowl Base</a>, <a href="https://bbroster.com/new-team" target="_blank" rel="noopener">BB Roster</a>. Slann은 BB Roster의 NAF 팀입니다.</p>
       </aside>
     </div>
     </div>
+    <section class="final-screen" id="final-screen" hidden>
+      <div class="final-toolbar"><button class="final-back" id="final-edit-btn">← 편집으로 돌아가기</button><button class="final-print" id="final-print-btn">인쇄 ↗</button></div>
+      <article class="final-sheet">
+        <div class="final-heading"><div><div class="section-index">BLOOD BOWL 2025 / CONFIRMED ROSTER</div><h1 id="final-name">팀 로스터</h1><p id="final-meta"></p></div><span class="final-seal">ROSTER<br>READY <b>✓</b></span></div>
+        <div class="final-metrics"><div><small>선수</small><strong id="final-count">11 / 16</strong></div><div><small>팀 가치</small><strong id="final-value">0 gp</strong></div><div><small>남은 예산</small><strong id="final-remaining">0 gp</strong></div><div><small>재굴림</small><strong id="final-rerolls">0</strong></div></div>
+        <div class="final-section-head"><span>01 / PLAYERS</span><h2>확정 선수 명단</h2></div>
+        <div class="final-table-wrap"><table class="final-table"><thead><tr><th>번호</th><th>포지션</th><th>스탯</th><th>스킬</th><th>비용</th></tr></thead><tbody id="final-roster-body"></tbody></table></div>
+        <div class="final-section-head"><span>02 / TEAM SUPPORT</span><h2>팀 운영</h2></div>
+        <div class="final-support" id="final-support"></div>
+        <div class="final-footer"><span>팬 제작 로스터 · BB2025</span><span id="final-footer-team"></span></div>
+      </article>
+    </section>
   </main>
   <dialog class="skill-dialog" id="skill-dialog" aria-labelledby="skill-dialog-title">
     <div class="skill-dialog-head"><div><span class="section-index">BB2025 / SKILL REFERENCE</span><h2 id="skill-dialog-title"></h2><span class="skill-kind" id="skill-dialog-kind"></span></div><button class="skill-close" id="skill-close" aria-label="스킬 설명 닫기">×</button></div>
