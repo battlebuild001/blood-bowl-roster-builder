@@ -147,10 +147,22 @@ function renderRulebook(){
   const chapter=GUIDE.chapters[ruleChapter];
   $('reference-content').innerHTML=`<div class="rules-layout"><aside class="rules-toc"><div class="section-index">CONTENTS / 10 CHAPTERS</div>${GUIDE.chapters.map((item,index)=>`<button type="button" data-rule-chapter="${index}" class="${index===ruleChapter?'active':''}"><span>${String(index+1).padStart(2,'0')}</span>${escapeHTML(item.title)}</button>`).join('')}</aside><article class="guide-article"><div class="guide-kicker">${escapeHTML(chapter.tag)}</div><h2>${escapeHTML(chapter.title)}</h2><p class="guide-lead">${escapeHTML(chapter.lead)}</p>${chapter.points.map(([title,body])=>`<section class="guide-point"><h3>${escapeHTML(title)}</h3><p>${escapeHTML(body)}</p></section>`).join('')}<div class="guide-article-foot">${sourceLink(chapter.source)}<span>${ruleChapter+1} / ${GUIDE.chapters.length}</span></div></article></div>`;
 }
-function quickTable(title,rows,source){return `<section class="quick-card"><div class="quick-card-head"><h3>${title}</h3>${source?sourceLink(source):''}</div><div class="quick-rows">${rows.map(([key,value])=>`<div><strong>${escapeHTML(key)}</strong><span>${escapeHTML(value)}</span></div>`).join('')}</div></section>`}
+function quickTable(title,rows,source,note='',extraClass=''){return `<section class="quick-card ${extraClass}"><div class="quick-card-head"><h3>${title}</h3>${source?sourceLink(source):''}</div>${note?`<p class="quick-note">${escapeHTML(note)}</p>`:''}<div class="quick-rows">${rows.map(([key,value])=>`<div><strong>${escapeHTML(key)}</strong><span>${escapeHTML(value)}</span></div>`).join('')}</div></section>`}
 function renderQuicksheet(){
   const q=GUIDE.quick,src=q.source;
-  $('reference-content').innerHTML=`<div class="quick-intro"><span class="section-index">MATCHDAY / AT A GLANCE</span><h2>경기 중 한눈에</h2><p>핵심 순서와 판정을 빠르게 확인하세요. 세부 예외는 원문을 참고하세요.</p></div><div class="quick-grid">${quickTable('경기 흐름',q.flow,src+'#sequence-of-play')}${quickTable('선수 행동',q.actions,src+'#player-activations')}${quickTable('블록 주사위',q.block,src+'#block-action')}${quickTable('부상 판정 · 2D6',q.injury,src+'#risking-injury')}${quickTable('날씨 · 2D6',q.weather,src+'#weather-table')}${quickTable('킥오프 이벤트 · 2D6',q.kickoff,src+'#kick-off-event-table')}<section class="quick-card quick-turnover"><div class="quick-card-head"><h3>턴오버 확인</h3>${sourceLink(src+'#the-turnover')}</div><ul>${q.turnover.map(item=>`<li>${escapeHTML(item)}</li>`).join('')}</ul></section></div>`;
+  $('reference-content').innerHTML=`<div class="quick-intro"><span class="section-index">MATCHDAY / AT A GLANCE</span><h2>경기 중 한눈에</h2><p>핵심 순서와 판정을 빠르게 확인하세요. 세부 예외는 원문을 참고하세요.</p></div><div class="quick-grid">
+    ${quickTable('경기 흐름',q.flow,src+'#sequence-of-play')}
+    ${quickTable('선수 행동',q.actions,src+'#player-activations')}
+    ${quickTable('블록 주사위',q.block,src+'#block-action')}
+    ${quickTable('일반 부상 판정 · 2D6',q.injury,src+'#injury-table')}
+    ${quickTable('스턴티 부상 판정 · 2D6',q.stuntyInjury,'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#stunty-injury-table')}
+    ${quickTable('사상자 판정 · D16',q.casualty,src+'#casualty-table')}
+    ${quickTable('영구 부상 · D6',q.lastingInjury,src+'#lasting-injury-table')}
+    ${quickTable('날씨 · 2D6',q.weather,src+'#weather-table')}
+    ${quickTable('킥오프 이벤트 · 2D6',q.kickoff,src+'#kick-off-event-table')}
+    <section class="quick-card quick-turnover"><div class="quick-card-head"><h3>턴오버 확인</h3>${sourceLink(src+'#the-turnover')}</div><ul>${q.turnover.map(item=>`<li>${escapeHTML(item)}</li>`).join('')}</ul></section>
+    ${quickTable('너플의 기도 · D16',q.prayers,'https://bloodbowlbase.ru/bb2025/core_rules/inducements/#0-3-prayers-to-nuffle',q.prayerNote,'quick-prayers')}
+  </div>`;
 }
 function renderTutorial(){
   const item=GUIDE.tutorial[tutorialStep],total=GUIDE.tutorial.length;
