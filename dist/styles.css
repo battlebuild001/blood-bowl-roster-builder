@@ -56,3 +56,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--color-accent);outli
 .quick-grid{align-items:start}
 .quick-prayers{grid-column:1/-1}
 .quick-note{margin:0;padding:13px 20px;color:#614d51;background:#e6d8d0;border-bottom:1px solid var(--color-paper-border);font-size:12px;line-height:1.6}
+.tutorial-intro{color:#574448;font-size:13px;line-height:1.7;margin:-8px 0 24px;max-width:760px}
+.tutorial-section-title,.tutorial-tips h3{font:600 19px Oswald,sans-serif;color:var(--color-ink);margin:0 0 10px}
+.tutorial-tips{border:1px solid var(--color-paper-border);background:#f3e9e2;padding:18px 20px;margin-top:24px}
+.tutorial-tips p{position:relative;margin:9px 0 0;padding-left:17px;color:#574448;font-size:12px;line-height:1.65}
+.tutorial-tips p:before{content:'•';position:absolute;left:0;color:#a14a53;font-weight:800}
