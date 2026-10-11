@@ -144,6 +144,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--color-accent);outli
 
 /* Keep wide data inside its panel instead of allowing a grid child to widen the page. */
 .workspace,.main-column,.sidebar,.panel,.roster-table-wrap,.final-table-wrap{min-width:0}
+@media screen and (max-width:800px){.selection-main{grid-row:1}.selection-sidebar{grid-row:2}}
 @media screen and (min-width:581px) and (max-width:800px){.roster-panel{overflow:hidden}.roster-panel table{min-width:0;width:100%}.roster-panel th:nth-child(2),.roster-panel td:nth-child(2){width:115px}.roster-panel th:nth-child(3),.roster-panel td:nth-child(3){width:185px}.roster-panel th:nth-child(5),.roster-panel td:nth-child(5){width:95px}}
 @media screen and (max-width:580px){
   .shell{padding-inline:16px}
