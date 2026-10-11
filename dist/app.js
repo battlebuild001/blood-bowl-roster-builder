@@ -110,6 +110,7 @@ let stage = localStorage.getItem(UI_KEY) || (hadSavedRoster ? 'builder' : 'selec
 let referenceFrom = localStorage.getItem('blood-bowl-reference-return') || 'builder';
 let guideTab = localStorage.getItem('blood-bowl-guide-tab') || 'rules';
 let ruleChapter = 0;
+let specialIndex = 0;
 let tutorialStep = 0;
 let draft = {team:state.team,name:state.name,budget:state.budget,league:state.league};
 const selectedTiers = new Set([1,2,3,4]);
@@ -137,14 +138,15 @@ function openReference(tab){
 }
 function sourceLink(url){return `<a class="guide-source" href="${url}" target="_blank" rel="noopener">BB2025 원문 보기 ↗</a>`}
 function renderReference(){
-  const tabs=[['rules','룰북'],['quick','퀵시트'],['tutorial','튜토리얼']];
+  const tabs=[['rules','룰북'],['quick','퀵시트'],['tutorial','튜토리얼'],['special','특수 규칙']];
   $('reference-tabs').innerHTML=tabs.map(([id,label])=>`<button type="button" role="tab" data-guide="${id}" aria-selected="${guideTab===id}" class="${guideTab===id?'active':''}">${label}</button>`).join('');
   if(guideTab==='rules')renderRulebook();
   else if(guideTab==='quick')renderQuicksheet();
+  else if(guideTab==='special')renderSpecial();
   else renderTutorial();
 }
 function renderDiagram(key){
-  const diagram=GUIDE.diagrams[key];
+  const diagram=typeof key==='string'?GUIDE.diagrams[key]:key;
   if(!diagram)return '';
   let visual='';
   if(diagram.type==='flow'){
@@ -185,6 +187,12 @@ function renderTutorial(){
   const steps=$('reference-content').querySelector('.tutorial-steps'),active=steps.querySelector('[aria-current="step"]');
   if(steps.scrollWidth>steps.clientWidth){steps.scrollLeft+=active.getBoundingClientRect().left-steps.getBoundingClientRect().left-(steps.clientWidth-active.clientWidth)/2}
 }
+function renderSpecial(){
+  const item=SPECIALS[specialIndex],total=SPECIALS.length;
+  $('reference-content').innerHTML=`<div class="rules-layout special-layout"><aside class="rules-toc special-toc" aria-label="특수 규칙 목록"><div class="section-index">SPECIAL RULES / ${total}</div>${SPECIALS.map((entry,index)=>`<button type="button" data-special-index="${index}" class="${index===specialIndex?'active':''}" ${index===specialIndex?'aria-current="page"':''}><span class="special-nav-number">${String(index+1).padStart(2,'0')}</span><span class="special-nav-copy"><small>${escapeHTML(entry.group)}</small>${escapeHTML(entry.title)}</span></button>`).join('')}</aside><article class="guide-article special-article"><div class="guide-kicker">${escapeHTML(item.tag)} · ${escapeHTML(item.group)}</div><h2>${escapeHTML(item.title)}</h2><p class="guide-lead">${escapeHTML(item.lead)}</p>${renderDiagram(item.diagram)}<h3 class="special-heading">판정 순서</h3><ol class="special-steps">${item.steps.map(step=>`<li>${escapeHTML(step)}</li>`).join('')}</ol><section class="special-notes"><h3>헷갈리기 쉬운 지점</h3>${item.notes.map(note=>`<p>${escapeHTML(note)}</p>`).join('')}</section><div class="special-example"><strong>경기 상황 예시</strong><p>${escapeHTML(item.example)}</p></div><div class="special-foot"><div class="special-sources">${item.sources.map(([label,url])=>`<a class="guide-source" href="${url}" target="_blank" rel="noopener">${escapeHTML(label)} ↗</a>`).join('')}</div><span>${specialIndex+1} / ${total}</span></div><div class="special-move"><button type="button" data-special-move="-1" ${specialIndex===0?'disabled':''}>← 이전 규칙</button><button type="button" data-special-move="1" ${specialIndex===total-1?'disabled':''}>다음 규칙 →</button></div></article></div>`;
+  const toc=$('reference-content').querySelector('.special-toc'),active=toc.querySelector('[aria-current="page"]');
+  if(toc.scrollWidth>toc.clientWidth){toc.scrollLeft+=active.getBoundingClientRect().left-toc.getBoundingClientRect().left-(toc.clientWidth-active.clientWidth)/2}
+}
 function renderPicker(){
   $('tier-filters').innerHTML=[1,2,3,4].map(n=>`<button class="tier-filter ${selectedTiers.has(n)?'active':''}" data-tier="${n}" aria-pressed="${selectedTiers.has(n)}" aria-label="등급 ${n}">${['I','II','III','IV'][n-1]}</button>`).join('');
   $('naf-filter').checked=includeNAF;
@@ -224,6 +232,8 @@ document.addEventListener('click',e=>{
   const chapter=e.target.closest('[data-rule-chapter]');if(chapter){ruleChapter=Number(chapter.dataset.ruleChapter);renderReference();return}
   const tutorial=e.target.closest('[data-tutorial-step]');if(tutorial){tutorialStep=Number(tutorial.dataset.tutorialStep);renderReference();return}
   const tutorialMove=e.target.closest('[data-tutorial-move]');if(tutorialMove){tutorialStep=Math.min(GUIDE.tutorial.length-1,Math.max(0,tutorialStep+Number(tutorialMove.dataset.tutorialMove)));renderReference();document.querySelector('.tutorial-card')?.scrollIntoView({block:'start',behavior:'auto'});return}
+  const special=e.target.closest('[data-special-index]');if(special){specialIndex=Number(special.dataset.specialIndex);renderReference();return}
+  const specialMove=e.target.closest('[data-special-move]');if(specialMove){specialIndex=Math.min(SPECIALS.length-1,Math.max(0,specialIndex+Number(specialMove.dataset.specialMove)));renderReference();document.querySelector('.special-article')?.scrollIntoView({block:'start',behavior:'auto'});return}
   const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
   const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
   const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id});render();return}
