@@ -111,3 +111,33 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--color-accent);outli
 @media(max-width:800px){.special-toc{max-height:none;overflow-x:auto;overflow-y:hidden}.special-toc button{min-width:138px}.special-nav-copy small{white-space:nowrap}}
 @media(max-width:580px){.special-article h2{overflow-wrap:anywhere}.special-foot{align-items:flex-start}}
 @media print{body.reading .special-toc,body.reading .special-move{display:none!important}body.reading .special-notes,body.reading .special-example{background:#fff!important;color:#111!important;border-color:#777!important}body.reading .special-steps li,body.reading .special-notes p,body.reading .special-example p{color:#111!important}}
+.reference-tabs{overflow-x:auto;scrollbar-width:thin}
+.reference-tabs button{flex:none;white-space:nowrap}
+.dictionary-intro{margin:0 0 22px}
+.dictionary-intro h2{font:600 34px Oswald,sans-serif;margin:7px 0;color:var(--color-text)}
+.dictionary-intro p{font-size:12px;line-height:1.65;color:var(--color-text-muted);margin:0}
+.dictionary-controls{background:var(--color-surface-soft);border:1px solid var(--color-border-soft);padding:18px;margin-bottom:18px;border-radius:4px}
+.dictionary-controls label{display:block;font-size:11px;font-weight:800;color:var(--color-text-muted);margin-bottom:7px}
+.dictionary-controls input{width:100%;background:var(--color-surface-inset);border:1px solid var(--color-border-control);color:var(--color-text);font:500 14px 'DM Sans',sans-serif;padding:12px 14px;border-radius:3px}
+.dictionary-controls input::placeholder{color:#a49090}
+.dictionary-filters{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.dictionary-filters button{border:1px solid var(--color-border-control);background:transparent;color:var(--color-text-muted);padding:7px 10px;border-radius:3px;font:700 11px 'DM Sans',sans-serif;cursor:pointer}
+.dictionary-filters button span{color:var(--color-accent);margin-left:4px}
+.dictionary-filters button.active,.dictionary-filters button:hover{background:#4e363b;color:var(--color-text);border-color:var(--color-accent)}
+.dictionary-layout{display:grid;grid-template-columns:285px minmax(0,1fr);gap:18px;align-items:start}
+.dictionary-list-panel{background:var(--color-surface-soft);border:1px solid var(--color-border-soft);border-radius:4px;overflow:hidden}
+.dictionary-count{color:var(--color-text-muted);font-size:11px;font-weight:800;letter-spacing:.5px;padding:14px 16px;border-bottom:1px solid var(--color-border-soft)}
+.dictionary-list{max-height:610px;overflow:auto;padding:7px}
+.dictionary-list button{display:flex;flex-direction:column;gap:3px;text-align:left;width:100%;border:0;background:transparent;color:var(--color-text);border-radius:3px;padding:10px 12px;cursor:pointer}
+.dictionary-list button:hover,.dictionary-list button.active{background:#4e363b}
+.dictionary-list button.active{box-shadow:inset 3px 0 var(--color-accent)}
+.dictionary-list strong{font-size:13px;line-height:1.25}
+.dictionary-list span{font-size:10px;color:var(--color-text-muted)}
+.dictionary-empty{padding:12px;color:var(--color-text-muted);font-size:12px;line-height:1.5}
+.dictionary-detail{min-height:330px}
+.dictionary-kind{margin:0 0 23px;color:#81525b;font-size:12px;font-weight:800}
+.dictionary-paragraphs p{border-top:1px solid var(--color-paper-border);padding-top:17px;margin:0 0 17px;color:#4c3b3f;font-size:14px;line-height:1.75}
+.dictionary-detail-empty{font-size:13px;color:#614d51}
+@media(max-width:800px){.dictionary-layout{grid-template-columns:1fr}.dictionary-list{max-height:255px}.dictionary-detail{min-height:0}}
+@media(max-width:580px){.reference-tabs button{flex:0 0 auto;padding:12px 14px}.top-nav{gap:0}.top-nav button{padding:9px 5px;font-size:10px}.dictionary-controls{padding:14px}.dictionary-detail{padding:23px}}
+@media print{body.reading .dictionary-controls,body.reading .dictionary-list-panel{display:none!important}body.reading .dictionary-layout{display:block}body.reading .dictionary-detail{background:#fff;color:#111;border:0}body.reading .dictionary-paragraphs p{color:#111}}

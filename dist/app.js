@@ -111,6 +111,10 @@ let referenceFrom = localStorage.getItem('blood-bowl-reference-return') || 'buil
 let guideTab = localStorage.getItem('blood-bowl-guide-tab') || 'rules';
 let ruleChapter = 0;
 let specialIndex = 0;
+let skillCategory = 'All';
+let skillQuery = '';
+let selectedSkillId = Object.keys(SKILLS)[0];
+const SKILL_CATEGORIES = [['All','전체'],['Agility','민첩'],['Devious','반칙'],['General','일반'],['Mutation','돌연변이'],['Passing','패스'],['Strength','힘'],['Trait','특성']];
 let tutorialStep = 0;
 let draft = {team:state.team,name:state.name,budget:state.budget,league:state.league};
 const selectedTiers = new Set([1,2,3,4]);
@@ -138,11 +142,12 @@ function openReference(tab){
 }
 function sourceLink(url){return `<a class="guide-source" href="${url}" target="_blank" rel="noopener">BB2025 원문 보기 ↗</a>`}
 function renderReference(){
-  const tabs=[['rules','룰북'],['quick','퀵시트'],['tutorial','튜토리얼'],['special','특수 규칙']];
+  const tabs=[['rules','룰북'],['quick','퀵시트'],['tutorial','튜토리얼'],['special','특수 규칙'],['skills','스킬 사전']];
   $('reference-tabs').innerHTML=tabs.map(([id,label])=>`<button type="button" role="tab" data-guide="${id}" aria-selected="${guideTab===id}" class="${guideTab===id?'active':''}">${label}</button>`).join('');
   if(guideTab==='rules')renderRulebook();
   else if(guideTab==='quick')renderQuicksheet();
   else if(guideTab==='special')renderSpecial();
+  else if(guideTab==='skills')renderSkillDictionary();
   else renderTutorial();
 }
 function renderDiagram(key){
@@ -193,6 +198,25 @@ function renderSpecial(){
   const toc=$('reference-content').querySelector('.special-toc'),active=toc.querySelector('[aria-current="page"]');
   if(toc.scrollWidth>toc.clientWidth){toc.scrollLeft+=active.getBoundingClientRect().left-toc.getBoundingClientRect().left-(toc.clientWidth-active.clientWidth)/2}
 }
+function renderSkillDictionary(){
+  $('reference-content').innerHTML=`<div class="dictionary-intro"><span class="section-index">SKILLS & TRAITS / BB2025</span><h2>스킬 사전</h2><p>스킬과 특성 ${Object.keys(SKILLS).length}개를 이름이나 규칙 문구로 찾을 수 있습니다. 상세 내용은 BB2025 영문 원문을 그대로 표시합니다.</p></div><div class="dictionary-controls"><label for="skill-search">스킬 검색</label><input id="skill-search" type="search" autocomplete="off" placeholder="예: Dodge, Block, Loner" value="${escapeHTML(skillQuery)}"><div class="dictionary-filters" id="dictionary-filters" role="group" aria-label="스킬 분류"></div></div><div class="dictionary-layout"><aside class="dictionary-list-panel" aria-label="스킬 목록"><div class="dictionary-count" id="dictionary-count"></div><div class="dictionary-list" id="dictionary-list"></div></aside><article class="guide-article dictionary-detail" id="dictionary-detail" aria-live="polite"></article></div>`;
+  renderSkillResults();
+}
+function renderSkillResults(){
+  const all=Object.entries(SKILLS).sort((a,b)=>a[1].title.localeCompare(b[1].title,'en'));
+  $('dictionary-filters').innerHTML=SKILL_CATEGORIES.map(([id,label])=>`<button type="button" data-skill-category="${id}" class="${skillCategory===id?'active':''}" aria-pressed="${skillCategory===id}">${label} <span>${id==='All'?all.length:all.filter(([,skill])=>skill.category===id).length}</span></button>`).join('');
+  const query=skillQuery.trim().toLocaleLowerCase();
+  const filtered=all.filter(([,skill])=>(skillCategory==='All'||skill.category===skillCategory)&&(!query||skill.title.toLocaleLowerCase().includes(query)||skill.paragraphs.some(p=>p.toLocaleLowerCase().includes(query))));
+  $('dictionary-count').textContent=`${filtered.length} / ${all.length}개 항목`;
+  if(!filtered.some(([id])=>id===selectedSkillId))selectedSkillId=filtered[0]?.[0]||'';
+  $('dictionary-list').innerHTML=filtered.length?filtered.map(([id,skill])=>`<button type="button" data-dictionary-skill="${id}" class="${id===selectedSkillId?'active':''}" aria-current="${id===selectedSkillId?'true':'false'}"><strong>${escapeHTML(skill.title)}</strong><span>${escapeHTML(SKILL_CATEGORIES.find(([key])=>key===skill.category)?.[1]||skill.category)} · ${skill.kind==='active'?'액티브':'패시브'}</span></button>`).join(''):'<p class="dictionary-empty">검색 결과가 없습니다. 이름이나 규칙 문구를 바꿔 보세요.</p>';
+  renderSkillDetail();
+}
+function renderSkillDetail(){
+  const skill=SKILLS[selectedSkillId];
+  $('dictionary-list').querySelectorAll('[data-dictionary-skill]').forEach(button=>{const active=button.dataset.dictionarySkill===selectedSkillId;button.classList.toggle('active',active);button.setAttribute('aria-current',String(active))});
+  $('dictionary-detail').innerHTML=skill?`<div class="guide-kicker">${escapeHTML(skill.category.toUpperCase())} / ${skill.kind==='active'?'ACTIVE':'PASSIVE'}</div><h2>${escapeHTML(skill.title)}</h2><p class="dictionary-kind">${skill.category==='Trait'?'특성':'스킬'} · ${escapeHTML(SKILL_CATEGORIES.find(([id])=>id===skill.category)?.[1]||skill.category)} · ${skill.kind==='active'?'액티브':'패시브'}</p><div class="dictionary-paragraphs">${skill.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</div><div class="guide-article-foot"><a class="guide-source" href="${skill.source}" target="_blank" rel="noopener">BB2025 원문 보기 ↗</a><span>Blood Bowl Base</span></div>`:'<div class="dictionary-detail-empty">표시할 항목이 없습니다.</div>';
+}
 function renderPicker(){
   $('tier-filters').innerHTML=[1,2,3,4].map(n=>`<button class="tier-filter ${selectedTiers.has(n)?'active':''}" data-tier="${n}" aria-pressed="${selectedTiers.has(n)}" aria-label="등급 ${n}">${['I','II','III','IV'][n-1]}</button>`).join('');
   $('naf-filter').checked=includeNAF;
@@ -234,6 +258,8 @@ document.addEventListener('click',e=>{
   const tutorialMove=e.target.closest('[data-tutorial-move]');if(tutorialMove){tutorialStep=Math.min(GUIDE.tutorial.length-1,Math.max(0,tutorialStep+Number(tutorialMove.dataset.tutorialMove)));renderReference();document.querySelector('.tutorial-card')?.scrollIntoView({block:'start',behavior:'auto'});return}
   const special=e.target.closest('[data-special-index]');if(special){specialIndex=Number(special.dataset.specialIndex);renderReference();return}
   const specialMove=e.target.closest('[data-special-move]');if(specialMove){specialIndex=Math.min(SPECIALS.length-1,Math.max(0,specialIndex+Number(specialMove.dataset.specialMove)));renderReference();document.querySelector('.special-article')?.scrollIntoView({block:'start',behavior:'auto'});return}
+  const category=e.target.closest('[data-skill-category]');if(category){skillCategory=category.dataset.skillCategory;renderSkillResults();return}
+  const dictionarySkill=e.target.closest('[data-dictionary-skill]');if(dictionarySkill){selectedSkillId=dictionarySkill.dataset.dictionarySkill;renderSkillDetail();if(window.innerWidth<=800)document.querySelector('.dictionary-detail')?.scrollIntoView({block:'start',behavior:'smooth'});return}
   const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
   const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
   const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id});render();return}
@@ -241,6 +267,7 @@ document.addEventListener('click',e=>{
   const rem=e.target.closest('[data-remove]');if(rem){state.players=state.players.filter(p=>p.id!==rem.dataset.remove);render();return}
   const step=e.target.closest('[data-step]');if(step){const key=step.dataset.step,max=key==='rerolls'?8:key==='apothecary'?1:key==='fans'?3:6,min=key==='fans'?1:0;state.staff[key]=Math.min(max,Math.max(min,state.staff[key]+Number(step.dataset.delta)));render()}
 });
+document.addEventListener('input',e=>{if(e.target.id==='skill-search'){skillQuery=e.target.value;renderSkillResults()}});
 $('skill-close').addEventListener('click',()=>$('skill-dialog').close());
 $('skill-dialog').addEventListener('click',e=>{if(e.target===$('skill-dialog'))$('skill-dialog').close()});
 $('reset-btn').addEventListener('click',()=>{if(state.players.length&&!confirm('현재 로스터를 지우고 새로 시작할까요?'))return;state=fresh();draft={team:state.team,name:'',budget:state.budget,league:state.league};render();setStage('selection')});
