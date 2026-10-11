@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'blood-bowl-roster-2025-v1';
+const UI_KEY = 'blood-bowl-roster-2025-screen';
 const LEGACY_KEY = 'blood-bowl-roster-2020-v1';
 const LEGACY_POSITIONS = {
   human:{lineman:'p0',halfling:'p1',catcher:'p2',thrower:'p3',blitzer:'p4',ogre:'p5'},
@@ -10,7 +11,8 @@ const LEGACY_POSITIONS = {
 };
 const money = n => Number(n).toLocaleString('ko-KR') + ' gp';
 const $ = id => document.getElementById(id);
-const fresh = () => ({team:'human',name:'',budget:1000000,players:[],staff:{rerolls:0,assistant:0,cheerleaders:0,fans:1,apothecary:0}});
+const fresh = () => ({team:'human',name:'',budget:1000000,league:TEAMS.human.leagues[0],players:[],staff:{rerolls:0,assistant:0,cheerleaders:0,fans:1,apothecary:0}});
+const hadSavedRoster = Boolean(localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_KEY));
 let state = fresh();
 try {
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -38,7 +40,8 @@ function normalize(raw) {
   }
   const clamp=(n,max)=>Math.min(max,Math.max(0,Number.parseInt(n,10)||0));
   const st=raw.staff||{};
-  return {team,name:String(raw.name||'').slice(0,40),budget,players,staff:{rerolls:clamp(st.rerolls,8),assistant:clamp(st.assistant,6),cheerleaders:clamp(st.cheerleaders,6),fans:Math.min(3,Math.max(1,Number.parseInt(st.fans,10)||1)),apothecary:TEAMS[team].apothecary?clamp(st.apothecary,1):0}};
+  const league = TEAMS[team].leagues.includes(raw.league) ? raw.league : TEAMS[team].leagues[0];
+  return {team,name:String(raw.name||'').slice(0,40),budget,league,players,staff:{rerolls:clamp(st.rerolls,8),assistant:clamp(st.assistant,6),cheerleaders:clamp(st.cheerleaders,6),fans:Math.min(3,Math.max(1,Number.parseInt(st.fans,10)||1)),apothecary:TEAMS[team].apothecary?clamp(st.apothecary,1):0}};
 }
 function team(){return TEAMS[state.team]}
 function position(id){return team().positions.find(p=>p[0]===id)}
@@ -73,23 +76,62 @@ function renderBudget(){
   else{status.classList.add('ready');$('status-icon').textContent='✓';$('status-title').textContent='킥오프 준비 완료';$('status-detail').textContent=`선수 ${state.players.length}명 · 남은 예산 ${money(remaining)}`}
 }
 function render(){
-  $('team-name').value=state.name;$('team-select').value=state.team;$('budget-select').value=String(state.budget);
-  $('team-meta').innerHTML=`<span>TIER ${team().tier}${team().nafTeam?' · NAF 팀':''}</span><span>${escapeHTML(team().leagues.join(' · '))}</span>${team().specialRules.length?`<span>특수 규칙: ${escapeHTML(team().specialRules.join(' · '))}</span>`:''}<a href="${team().source}" target="_blank" rel="noopener">팀 자료 ↗</a>`;
+  $('team-name').value=state.name;$('team-current').textContent=team().name;$('budget-select').value=String(state.budget);
+  $('team-meta').innerHTML=`<span>TIER ${team().tier}${team().nafTeam?' · NAF 팀':''}</span><span>${escapeHTML(state.league)}</span>${team().specialRules.length?`<span>특수 규칙: ${escapeHTML(team().specialRules.join(' · '))}</span>`:''}<a href="${team().source}" target="_blank" rel="noopener">팀 자료 ↗</a>`;
   renderPositions();renderRoster();renderStaff();renderBudget();save();
 }
-$('team-select').innerHTML=Object.entries(TEAMS).map(([id,t])=>`<option value="${id}">${t.name}</option>`).join('');
+let stage = localStorage.getItem(UI_KEY) || (hadSavedRoster ? 'builder' : 'selection');
+let draft = {team:state.team,name:state.name,budget:state.budget,league:state.league};
+const selectedTiers = new Set([1,2,3,4]);
+let includeNAF = true;
+let searchTerm = '';
+function setStage(next){
+  stage=next;localStorage.setItem(UI_KEY,next);
+  $('selection-screen').hidden=next!=='selection';$('builder-screen').hidden=next!=='builder';
+  document.body.classList.toggle('picking',next==='selection');
+  if(next==='selection')renderPicker();
+  window.scrollTo({top:0,behavior:'auto'});
+}
+function renderPicker(){
+  $('tier-filters').innerHTML=[1,2,3,4].map(n=>`<button class="tier-filter ${selectedTiers.has(n)?'active':''}" data-tier="${n}" aria-pressed="${selectedTiers.has(n)}" aria-label="등급 ${n}">${['I','II','III','IV'][n-1]}</button>`).join('');
+  $('naf-filter').checked=includeNAF;
+  const found=Object.entries(TEAMS).filter(([,t])=>selectedTiers.has(t.tier)&&(includeNAF||!t.nafTeam)&&t.name.toLocaleLowerCase().includes(searchTerm));
+  $('faction-count').textContent=`${found.length}개`;
+  $('faction-grid').innerHTML=found.map(([id,t])=>`<button class="faction-card ${draft.team===id?'selected':''}" data-faction="${id}" aria-pressed="${draft.team===id}"><span class="faction-name">${escapeHTML(t.name)}</span><span class="faction-bottom"><span class="tier-chip">TIER ${t.tier}</span>${t.nafTeam?'<span class="naf-chip">NAF</span>':''}<span>${t.positions.length}개 포지션</span></span></button>`).join('');
+  $('picker-empty').hidden=found.length>0;
+  const t=TEAMS[draft.team];$('draft-faction').textContent=t.name;
+  $('draft-description').textContent=`Tier ${t.tier} · ${t.positions.length}개 포지션${t.nafTeam?' · NAF 팀':''}`;
+  $('draft-rule').textContent=t.specialRules.length?`특수 규칙 · ${t.specialRules.join(' · ')}`:'시작 로스터 규칙 적용';
+  $('draft-name').value=draft.name;$('draft-budget').value=String(draft.budget);
+  $('draft-league').innerHTML=t.leagues.map(l=>`<option value="${escapeHTML(l)}">${escapeHTML(l)}</option>`).join('');
+  $('draft-league').value=draft.league;
+  $('draft-reroll').textContent=money(t.reroll);$('draft-apothecary').textContent=t.apothecary?'가능':'불가';$('draft-source').href=t.source;
+}
+$('faction-search').addEventListener('input',e=>{searchTerm=e.target.value.trim().toLocaleLowerCase();renderPicker()});
+$('naf-filter').addEventListener('change',e=>{includeNAF=e.target.checked;renderPicker()});
+$('draft-name').addEventListener('input',e=>{draft.name=e.target.value});
+$('draft-budget').addEventListener('change',e=>{draft.budget=Number(e.target.value)});
+$('draft-league').addEventListener('change',e=>{draft.league=e.target.value});
+$('create-btn').addEventListener('click',()=>{
+  if(state.players.length&&state.team!==draft.team&&!confirm('팩션을 바꾸면 현재 선수 명단이 지워집니다. 계속할까요?'))return;
+  if(state.team!==draft.team){state.players=[];state.staff.apothecary=0}
+  state.team=draft.team;state.name=draft.name.trim();state.budget=draft.budget;state.league=draft.league;
+  render();setStage('builder');
+});
+$('change-team-btn').addEventListener('click',()=>{draft={team:state.team,name:state.name,budget:state.budget,league:state.league};setStage('selection')});
 $('team-name').addEventListener('input',e=>{state.name=e.target.value;save()});
 $('budget-select').addEventListener('change',e=>{state.budget=Number(e.target.value);render()});
-$('team-select').addEventListener('change',e=>{if(state.players.length&&!confirm('종족을 변경하면 현재 선수 명단이 지워집니다. 계속할까요?')){e.target.value=state.team;return}state.team=e.target.value;state.players=[];state.staff.apothecary=0;render()});
 document.addEventListener('click',e=>{
+  const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
+  const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
   const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id,name:''});render();return}
   const rem=e.target.closest('[data-remove]');if(rem){state.players=state.players.filter(p=>p.id!==rem.dataset.remove);render();return}
   const step=e.target.closest('[data-step]');if(step){const key=step.dataset.step,max=key==='rerolls'?8:key==='apothecary'?1:key==='fans'?3:6,min=key==='fans'?1:0;state.staff[key]=Math.min(max,Math.max(min,state.staff[key]+Number(step.dataset.delta)));render()}
 });
 document.addEventListener('input',e=>{if(e.target.matches('[data-name]')){const p=state.players.find(p=>p.id===e.target.dataset.name);if(p){p.name=e.target.value;save()}}});
-$('reset-btn').addEventListener('click',()=>{if(confirm('현재 로스터를 지우고 새로 시작할까요?')){state=fresh();render()}});
+$('reset-btn').addEventListener('click',()=>{if(state.players.length&&!confirm('현재 로스터를 지우고 새로 시작할까요?'))return;state=fresh();draft={team:state.team,name:'',budget:state.budget,league:state.league};render();setStage('selection')});
 $('export-btn').addEventListener('click',()=>{const output={ruleset:'Blood Bowl 2025',...state,players:state.players.map(({pos,name})=>({pos,name}))};const blob=new Blob([JSON.stringify(output,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(state.name.trim().replace(/[^\p{L}\p{N}_-]+/gu,'-')||'blood-bowl-roster')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
 $('import-btn').addEventListener('click',()=>$('import-file').click());
-$('import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!TEAMS[data.team]||!Array.isArray(data.players))throw Error('형식 오류');if(state.players.length&&!confirm('현재 로스터를 불러온 파일로 교체할까요?'))return;state=normalize(data);render()}catch{alert('유효한 로스터 JSON 파일을 불러오지 못했습니다.')}finally{e.target.value=''}});
+$('import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!TEAMS[data.team]||!Array.isArray(data.players))throw Error('형식 오류');if(state.players.length&&!confirm('현재 로스터를 불러온 파일로 교체할까요?'))return;state=normalize(data);render();setStage('builder')}catch{alert('유효한 로스터 JSON 파일을 불러오지 못했습니다.')}finally{e.target.value=''}});
 $('print-btn').addEventListener('click',()=>window.print());
-render();
+render();setStage(stage);

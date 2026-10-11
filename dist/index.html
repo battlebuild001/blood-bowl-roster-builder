@@ -16,6 +16,21 @@
   </header>
 
   <main class="shell">
+    <section class="selection-screen" id="selection-screen" hidden>
+      <div class="selection-intro"><div class="eyebrow"><span class="eyebrow-line"></span> NEW TEAM / 01</div><h1>나의 팀을<br><em>선택하세요.</em></h1><p>BB2025 팩션을 고르고 리그와 예산을 정한 뒤 로스터를 만드세요.</p></div>
+      <div class="flow-line"><div class="flow-step active"><span>01</span> 팀 선택</div><div class="flow-step"><span>02</span> 로스터 구성</div><div class="flow-step"><span>03</span> 저장 · 인쇄</div></div>
+      <div class="selection-layout">
+        <div class="selection-main">
+          <div class="format-strip"><div><small>ROSTER MODE</small><strong>리그 시작 로스터</strong></div><div><small>FORMAT</small><strong>Blood Bowl · 11인제</strong></div><div><small>RULESET</small><strong>Season Three · 2025</strong></div></div>
+          <div class="picker-head"><div><span class="section-index">CHOOSE A FACTION</span><h2>팩션 목록 <span id="faction-count">31개</span></h2></div><label class="search-wrap"><span class="sr-only">팩션 검색</span><input type="search" id="faction-search" placeholder="팩션 검색" autocomplete="off"></label></div>
+          <div class="picker-filters"><span>등급</span><div class="tier-buttons" id="tier-filters"></div><label class="naf-filter"><input type="checkbox" id="naf-filter" checked><span>NAF 팀 포함</span></label></div>
+          <div class="faction-grid" id="faction-grid"></div>
+          <div class="picker-empty" id="picker-empty" hidden>검색 조건에 맞는 팩션이 없습니다.</div>
+        </div>
+        <aside class="selection-sidebar"><div class="selection-card"><div class="section-index">YOUR TEAM / 02</div><h2 id="draft-faction">Human</h2><p id="draft-description">Tier 2 · 6개 포지션</p><div class="selected-rule" id="draft-rule"></div><label>팀 이름<input id="draft-name" maxlength="40" placeholder="팀 이름을 입력하세요" autocomplete="off"></label><label>시작 예산<select id="draft-budget"><option value="1000000">1,000,000 gp · 리그 기본</option><option value="1100000">1,100,000 gp</option><option value="1200000">1,200,000 gp</option><option value="1500000">1,500,000 gp</option></select></label><label>소속 리그<select id="draft-league"></select></label><div class="draft-details"><div><span>재굴림</span><strong id="draft-reroll">50,000 gp</strong></div><div><span>아포세커리</span><strong id="draft-apothecary">가능</strong></div></div><button class="create-btn" id="create-btn">로스터 만들기 <span>→</span></button><a class="source-link" id="draft-source" href="https://bloodbowlbase.ru/bb2025/teams/Human/" target="_blank" rel="noopener">팀 자료 확인 ↗</a></div></aside>
+      </div>
+    </section>
+    <div id="builder-screen" hidden>
     <section class="hero">
       <div><div class="eyebrow"><span class="eyebrow-line"></span> THE DUGOUT / 팀 구성</div><h1>승리는 <em>로스터</em>에서<br>시작된다.</h1><p>선수를 영입하고, 금고를 계산하고, 다음 킥오프를 준비하세요.</p></div>
       <div class="hero-stamp"><span>COACH'S</span><strong>PLAYBOOK</strong><span>SEASON 2025</span></div>
@@ -25,7 +40,7 @@
       <section class="main-column">
         <div class="panel setup-panel">
           <div class="panel-head"><div><span class="section-index">01 / TEAM SETUP</span><h2>팀 설정</h2></div><span class="rules-badge">BB2025 · 31개 팩션</span></div>
-          <div class="setup-grid"><label>팀 이름<input id="team-name" maxlength="40" placeholder="예: 올드 월드 레이븐스" autocomplete="off"></label><label>팩션<select id="team-select"></select></label><label>시작 예산<select id="budget-select"><option value="1000000">1,000,000 gp · 리그 기본</option><option value="1100000">1,100,000 gp</option><option value="1200000">1,200,000 gp</option><option value="1500000">1,500,000 gp</option></select></label></div>
+          <div class="setup-grid"><label>팀 이름<input id="team-name" maxlength="40" placeholder="예: 올드 월드 레이븐스" autocomplete="off"></label><div class="setup-field">팩션<div class="team-current"><strong id="team-current">Human</strong><button id="change-team-btn">변경</button></div></div><label>시작 예산<select id="budget-select"><option value="1000000">1,000,000 gp · 리그 기본</option><option value="1100000">1,100,000 gp</option><option value="1200000">1,200,000 gp</option><option value="1500000">1,500,000 gp</option></select></label></div>
           <div class="team-meta" id="team-meta"></div>
         </div>
 
@@ -49,6 +64,7 @@
         <button class="print-btn" id="print-btn">로스터 인쇄 <span>↗</span></button>
         <p class="footnote">팬 제작 보조 도구 · Blood Bowl 2025 시작 로스터 기준. 팀 정보 출처: <a href="https://bloodbowlbase.ru/bb2025/teams/" target="_blank" rel="noopener">Blood Bowl Base</a>, <a href="https://bbroster.com/new-team" target="_blank" rel="noopener">BB Roster</a>. Slann은 BB Roster의 NAF 팀입니다.</p>
       </aside>
+    </div>
     </div>
   </main>
   <script src="teams.js"></script>
