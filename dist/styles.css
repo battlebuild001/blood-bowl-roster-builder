@@ -61,3 +61,28 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--color-accent);outli
 .tutorial-tips{border:1px solid var(--color-paper-border);background:#f3e9e2;padding:18px 20px;margin-top:24px}
 .tutorial-tips p{position:relative;margin:9px 0 0;padding-left:17px;color:#574448;font-size:12px;line-height:1.65}
 .tutorial-tips p:before{content:'•';position:absolute;left:0;color:#a14a53;font-weight:800}
+.rule-diagram{margin:0 0 25px;padding:18px;border:1px solid var(--color-paper-border);background:#f6ede7;border-radius:3px;color:var(--color-ink)}
+.rule-diagram figcaption{font:600 18px Oswald,sans-serif;margin-bottom:13px}
+.diagram-note{font-size:11px;line-height:1.55;color:#72595e;margin:12px 0 0}
+.diagram-flow{display:flex;align-items:stretch;gap:7px}
+.diagram-node{min-width:0;flex:1;background:#e9d9d0;border:1px solid #cfb7af;border-top:3px solid var(--color-accent);padding:11px 10px;display:flex;flex-direction:column;gap:5px}
+.diagram-node strong{font-size:12px;line-height:1.25;color:#3d292e}
+.diagram-node span{font-size:10px;line-height:1.45;color:#71575d}
+.diagram-arrow{align-self:center;flex:none;color:#ab5661;font:700 18px Oswald,sans-serif}
+.diagram-compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.diagram-branch-start{text-align:center;width:max-content;max-width:100%;margin:0 auto 19px;padding:10px 16px;background:#493139;color:#f4eae5;font-size:12px;font-weight:800;border-radius:2px;position:relative}
+.diagram-branch-start:after{content:'';position:absolute;left:50%;top:100%;height:19px;border-left:2px solid #a75862}
+.diagram-branches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.diagram-pitch{border:1px solid #74545b;background:#35262b;color:#f4eae5;text-align:center;overflow:hidden}
+.diagram-pitch-opponent,.diagram-pitch-own{padding:9px;color:#d8c6bc;font-size:10px;font-weight:800;letter-spacing:1px}
+.diagram-pitch-opponent{border-bottom:2px solid #d17981}
+.diagram-pitch-line{background:#674047;padding:5px;font-size:10px;font-weight:800;letter-spacing:.8px}
+.diagram-pitch-zones{display:grid;grid-template-columns:1fr 1.6fr 1fr;min-height:102px}
+.diagram-pitch-zones>div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:9px 5px;border-right:1px solid #74545b;font-size:11px}
+.diagram-pitch-zones>div:last-child{border:0}
+.diagram-pitch-zones strong{font-size:10px;color:#e3b5ac}
+.diagram-pitch-center span{font-size:23px;line-height:1;color:#e38a90;letter-spacing:2px}
+.diagram-pitch-own{border-top:1px solid #74545b}
+@media(max-width:700px){.diagram-flow{flex-direction:column;gap:4px}.diagram-arrow{transform:rotate(90deg);line-height:1}.diagram-node{padding:10px}.diagram-compare{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.rule-diagram{padding:13px}.diagram-branches{grid-template-columns:1fr}.diagram-pitch-zones>div{font-size:9px}.diagram-pitch-zones strong{font-size:9px}}
+@media print{.rule-diagram,.diagram-node,.diagram-pitch{background:#fff!important;color:#111!important;border-color:#777!important;break-inside:avoid}.diagram-node strong,.diagram-node span,.diagram-note,.diagram-pitch-zones strong{color:#111!important}}

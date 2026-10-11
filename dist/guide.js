@@ -1,57 +1,57 @@
 const GUIDE = {
   chapters: [
-    {title:'경기의 목표와 시간',tag:'01 / THE GAME',lead:'공을 상대 엔드존으로 운반해 터치다운을 올립니다. 두 번의 하프가 끝났을 때 득점이 더 많은 팀이 승리합니다.',points:[
+    {title:'경기의 목표와 시간',diagram:'gameFlow',tag:'01 / THE GAME',lead:'공을 상대 엔드존으로 운반해 터치다운을 올립니다. 두 번의 하프가 끝났을 때 득점이 더 많은 팀이 승리합니다.',points:[
       ['경기 시간','한 경기는 2하프로 진행됩니다. 각 하프는 8라운드이며, 한 라운드에 양 팀이 각각 한 턴을 가집니다.'],
       ['터치다운','공을 소지한 선수가 서 있는 상태로 상대 엔드존의 칸에 있으면 즉시 터치다운입니다. 득점하면 그 드라이브가 끝납니다.'],
       ['드라이브','킥오프로 시작해 터치다운이나 하프 종료까지 이어지는 경기 구간입니다. 남은 턴이 있으면 다음 드라이브를 준비합니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#a-game-of-two-halves'},
-    {title:'선수 카드 읽기',tag:'02 / PLAYER PROFILE',lead:'선수의 능력치와 시작 스킬을 먼저 보면 어떤 행동을 맡길지 판단하기 쉽습니다.',points:[
+    {title:'선수 카드 읽기',diagram:'profile',tag:'02 / PLAYER PROFILE',lead:'선수의 능력치와 시작 스킬을 먼저 보면 어떤 행동을 맡길지 판단하기 쉽습니다.',points:[
       ['MA · 이동력','한 번의 이동 행동에서 움직일 수 있는 칸 수입니다. 더 이동하려면 러시를 시도합니다.'],
       ['ST · 힘','블록할 때 상대의 힘과 비교해 블록 주사위 수와 결과 선택권을 정합니다.'],
       ['AG · 민첩 / PA · 패스','AG는 닷지·공 줍기·캐치 등에, PA는 패스 판정에 사용합니다. 숫자 뒤의 +는 성공에 필요한 주사위 눈입니다.'],
       ['AV · 방어력','넘어진 선수의 갑옷이 깨지는지 판정할 때 사용합니다. 스킬과 특성은 각자의 설명을 따릅니다.'],
       ['선수 상태','선 선수는 행동할 수 있습니다. 엎드리거나 기절한 선수는 태클 존을 잃고, 턴 시작부터 기절해 있었다면 그 턴에 활성화할 수 없습니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/rules_and_regulations/#player-profiles-and-characteristic-tests'},
-    {title:'경기 전과 킥오프',tag:'03 / SET-UP',lead:'경기 전 절차를 마친 뒤 드라이브마다 배치, 킥오프, 킥오프 이벤트 순서로 진행합니다.',points:[
+    {title:'경기 전과 킥오프',diagram:'setup',tag:'03 / SET-UP',lead:'경기 전 절차를 마친 뒤 드라이브마다 배치, 킥오프, 킥오프 이벤트 순서로 진행합니다.',points:[
       ['경기 전 절차','팬과 날씨를 확인하고, 리그 경기라면 용병·유도금 관련 절차를 처리한 뒤 킥 팀을 정합니다.'],
       ['11명 배치','킥 팀부터 배치하며 각 팀은 가능한 한 11명을 필드에 둡니다. 자기 진영에 배치하고, 스크리미지 라인 중앙에 최소 3명, 양쪽 와이드 존에는 각각 최대 2명을 둡니다.'],
       ['킥오프','킥 팀이 공을 차고, 공이 날아가는 동안 킥오프 이벤트를 적용합니다. 각 드라이브에서는 공을 받는 팀이 첫 턴을 가집니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#start-of-a-drive'},
-    {title:'턴과 행동',tag:'04 / ACTIONS',lead:'자기 턴에는 각 선수를 한 번씩 활성화할 수 있습니다. 행동 종류를 먼저 선언하고, 턴오버가 나면 즉시 턴이 끝납니다.',points:[
+    {title:'턴과 행동',diagram:'turnFlow',tag:'04 / ACTIONS',lead:'자기 턴에는 각 선수를 한 번씩 활성화할 수 있습니다. 행동 종류를 먼저 선언하고, 턴오버가 나면 즉시 턴이 끝납니다.',points:[
       ['기본 행동','이동, 블록, 블리츠, 패스, 핸드오프, 파울, 팀메이트 던지기, 공 확보 등이 있습니다. 선언한 행동을 중간에 다른 행동으로 바꿀 수 없습니다.'],
       ['블리츠·패스·핸드오프','이 행동은 각각 팀 턴당 한 번만 선언할 수 있습니다. 이동 후 해당 행동을 할 수 있지만, 패스나 핸드오프를 마친 뒤에는 계속 이동할 수 없습니다.'],
       ['재굴림','재굴림 결과를 반드시 사용하며 같은 주사위를 다시 재굴릴 수 없습니다. 2025 규칙에서는 한 턴에 팀 재굴림을 여러 번 쓸 수 있지만, 금지된 주사위 종류에는 쓸 수 없습니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#a-teams-turn'},
-    {title:'이동과 공 확보',tag:'05 / MOVEMENT',lead:'위험한 행동의 순서를 정해 두면 공을 잃고 턴이 끝나는 상황을 줄일 수 있습니다.',points:[
+    {title:'이동과 공 확보',diagram:'looseBall',tag:'05 / MOVEMENT',lead:'위험한 행동의 순서를 정해 두면 공을 잃고 턴이 끝나는 상황을 줄일 수 있습니다.',points:[
       ['이동과 일어서기','엎드린 선수가 일어서는 데는 보통 이동력 3칸이 듭니다. MA가 2 이하인 선수는 일어서기 판정이 필요합니다.'],
       ['닷지','상대에게 마크된 칸에서 떠날 때 AG 판정을 합니다. 들어가는 칸을 마크하는 상대 선수마다 −1 보정이 붙으며, 실패하면 넘어집니다.'],
       ['러시','이동력 밖으로 최대 2칸 더 움직일 수 있습니다. 칸마다 D6에서 2+가 필요하고, 실패하면 그 칸에서 넘어집니다.'],
       ['공 줍기','공이 있는 칸에 자발적으로 들어가면 AG 판정으로 줍습니다. 실패하면 공이 튀고 턴오버가 납니다.'],
       ['공 확보 행동','공이 땅에 있고 그 공에서 2칸 이내에 방해 가능한 상대가 없을 때 선언할 수 있습니다. 공이 있는 칸으로 이동해 D6 2+로 줍고 활성화를 끝냅니다. 실패하거나 공이 없는 칸에서 이동을 마치면 턴오버입니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#move-actions'},
-    {title:'블록과 부상',tag:'06 / CONTACT',lead:'블록 전 힘과 도움을 비교합니다. 넘어지면 갑옷 판정과 필요 시 부상 판정으로 이어집니다.',points:[
+    {title:'블록과 부상',diagram:'contactFlow',tag:'06 / CONTACT',lead:'블록 전 힘과 도움을 비교합니다. 넘어지면 갑옷 판정과 필요 시 부상 판정으로 이어집니다.',points:[
       ['블록 주사위','수정된 힘이 같으면 1개, 한쪽이 높으면 2개, 두 배를 초과하면 3개를 굴립니다. 힘이 높은 선수의 코치가 사용할 결과를 고릅니다.'],
       ['어시스트','조건을 만족하는 아군이 상대를 마크하면 해당 선수의 힘에 +1을 줄 수 있습니다. 상대도 방어 어시스트를 받을 수 있습니다.'],
       ['블록 결과','공격자 다운, 양쪽 다운, 밀어내기, 비틀거림, POW 중 결과를 적용합니다. 비틀거림은 상대의 Dodge 스킬에 따라 밀어내기로 바뀔 수 있습니다.'],
       ['부상','갑옷이 깨지면 2D6 부상 판정: 2–7 기절, 8–9 KO, 10–12 사상자입니다. 사상자는 별도 사상자 판정을 합니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#block-actions'},
-    {title:'패스·핸드오프·득점',tag:'07 / THE BALL',lead:'공을 안전하게 옮기는 것이 핵심입니다. 실패한 캐치나 패스는 턴오버로 이어질 수 있습니다.',points:[
+    {title:'패스·핸드오프·득점',diagram:'passFlow',tag:'07 / THE BALL',lead:'공을 안전하게 옮기는 것이 핵심입니다. 실패한 캐치나 패스는 턴오버로 이어질 수 있습니다.',points:[
       ['패스','한 팀 턴에 한 명이 패스 행동을 선언합니다. 목표 칸과 거리를 정하고 PA 판정, 인터셉트, 캐치 또는 착지 결과 순서로 해결합니다.'],
       ['핸드오프','이동을 마친 뒤 인접한 서 있는 아군에게 공을 건넵니다. 받는 선수는 캐치 판정을 합니다.'],
       ['터치다운','공을 가진 선수가 서 있는 상태로 상대 엔드존에 들어가거나 그곳에서 공을 잡으면 득점합니다. 그 순간 드라이브가 끝납니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#pass-actions'},
-    {title:'턴오버와 드라이브 종료',tag:'08 / TURNOVER',lead:'턴오버는 현재 팀의 남은 활성화를 모두 끝냅니다. 행동을 시작하기 전에 위험도를 확인하세요.',points:[
+    {title:'턴오버와 드라이브 종료',diagram:'turnover',tag:'08 / TURNOVER',lead:'턴오버는 현재 팀의 남은 활성화를 모두 끝냅니다. 행동을 시작하기 전에 위험도를 확인하세요.',points:[
       ['주요 턴오버','자기 선수가 자기 턴에 넘어지거나 쓰러짐, 공 줍기 실패, 패스 펌블, 공이 바닥에 떨어지는 캐치 실패, 상대의 공 획득, 파울 퇴장 등이 포함됩니다.'],
       ['득점도 턴오버','터치다운 역시 턴오버로 처리되지만 동시에 드라이브가 끝나므로 좋은 결과입니다.'],
       ['드라이브 종료','득점 또는 하프 마지막 턴 뒤에는 비밀무기, 드라이브 종료 효과, KO 회복 등을 처리하고 남은 턴이 있다면 새 드라이브를 시작합니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/cheat_sheet/#the-turnover'},
-    {title:'팀 구성과 팀 가치',tag:'09 / DRAFT',lead:'로스터 빌더의 비용과 인원 제한은 BB2025 시작 팀 구성 규칙을 따릅니다.',points:[
+    {title:'팀 구성과 팀 가치',diagram:'rosterFlow',tag:'09 / DRAFT',lead:'로스터 빌더의 비용과 인원 제한은 BB2025 시작 팀 구성 규칙을 따릅니다.',points:[
       ['시작 인원과 예산','새 리그 팀은 보통 1,000,000 gp를 사용하며, 처음 등록할 때 선수 11–16명이 필요합니다.'],
       ['팀 운영','팀 재굴림은 최대 8개, 어시스턴트 코치와 치어리더는 각각 최대 6명, 아포세커리는 허용된 팀만 최대 1명입니다.'],
       ['열성 팬','시작값은 1이며, 팀 구성 시 최대 3까지 올릴 수 있습니다. 한 단계마다 5,000 gp를 지불합니다.'],
       ['팀 가치','선수의 현재 가치와 팀 운영 인력 및 재굴림 비용을 합산합니다. 열성 팬과 금고에 남은 돈은 팀 가치에 넣지 않습니다.']
     ],source:'https://bloodbowlbase.ru/bb2025/core_rules/drafting_a_blood_bowl_team/'},
-    {title:'리그 경기 후',tag:'10 / LEAGUE',lead:'리그에서는 경기 결과와 선수의 성장을 기록한 뒤 다음 경기를 준비합니다.',points:[
+    {title:'리그 경기 후',diagram:'leagueFlow',tag:'10 / LEAGUE',lead:'리그에서는 경기 결과와 선수의 성장을 기록한 뒤 다음 경기를 준비합니다.',points:[
       ['경기 후 순서','결과·상금 기록 → 열성 팬 갱신 → 선수 성장 → 영입·해고·임시 은퇴 → 고액 보유금 사고 → 다음 경기 준비 순서입니다.'],
       ['선수 성장','컴플리션, 인터셉트, 사상자 유발, 터치다운, MVP 등으로 SPP를 얻고 이를 성장에 사용합니다.'],
       ['현재 팀 가치','다음 경기에 출전할 수 없는 선수의 현재 가치를 팀 가치에서 제외해 계산합니다.']
@@ -74,7 +74,7 @@ const GUIDE = {
   },
   tutorial: [
     {
-      title:'경기의 목표와 한 경기의 흐름',tag:'01 / THE GAME',
+      title:'경기의 목표와 한 경기의 흐름',diagram:'gameFlow',tag:'01 / THE GAME',
       goal:'상대 엔드존에 공을 가져가 득점하고, 두 하프가 끝났을 때 더 많은 터치다운을 기록하세요.',
       intro:'경기는 여러 번의 드라이브로 이루어집니다. 매 드라이브는 배치와 킥오프로 시작하고, 터치다운이나 하프 종료로 끝납니다.',
       steps:[
@@ -89,7 +89,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#scoring-a-touchdown'
     },
     {
-      title:'선수 카드와 주사위 읽기',tag:'02 / PLAYER PROFILE',
+      title:'선수 카드와 주사위 읽기',diagram:'profile',tag:'02 / PLAYER PROFILE',
       goal:'능력치의 쓰임과 3+처럼 적힌 목표값을 읽을 수 있게 됩니다.',
       intro:'선수마다 맡기기 좋은 행동이 다릅니다. 행동을 선언하기 전에 카드의 능력치와 시작 스킬을 확인하세요.',
       steps:[
@@ -104,7 +104,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/rules_and_regulations/#player-profiles-and-characteristic-tests'
     },
     {
-      title:'경기 전 준비와 날씨',tag:'03 / PRE-GAME',
+      title:'경기 전 준비와 날씨',diagram:'preGame',tag:'03 / PRE-GAME',
       goal:'배치에 앞서 필요한 경기 전 절차를 놓치지 않습니다.',
       intro:'리그 경기라면 팀 가치와 유도금 절차도 경기 전에 처리합니다. 첫 연습 경기에서는 팬, 날씨, 킥 팀 결정부터 익혀도 좋습니다.',
       steps:[
@@ -119,7 +119,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#pre-game-sequence'
     },
     {
-      title:'선수 배치와 킥오프',tag:'04 / SET-UP',
+      title:'선수 배치와 킥오프',diagram:'setup',tag:'04 / SET-UP',
       goal:'합법적인 배치를 하고 공이 떨어질 때까지 킥오프 절차를 따라갑니다.',
       intro:'배치는 드라이브마다 다시 합니다. 공격을 받는 팀은 공이 어디로 올지 모르므로 회수할 선수와 보호할 선수를 함께 배치하세요.',
       steps:[
@@ -134,7 +134,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#start-of-drive-sequence'
     },
     {
-      title:'한 턴과 선수 활성화',tag:'05 / YOUR TURN',
+      title:'한 턴과 선수 활성화',diagram:'turnFlow',tag:'05 / YOUR TURN',
       goal:'턴 마커를 올리고 선수별 행동을 선언하며, 횟수 제한이 있는 행동을 관리합니다.',
       intro:'한 선수가 행동을 마친 뒤 다음 선수를 고릅니다. 턴오버가 발생하면 아직 행동하지 않은 선수가 있어도 턴이 바로 끝납니다.',
       steps:[
@@ -149,7 +149,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#player-activations'
     },
     {
-      title:'이동·일어서기·닷지·러시',tag:'06 / MOVEMENT',
+      title:'이동·일어서기·닷지·러시',diagram:'movement',tag:'06 / MOVEMENT',
       goal:'선수를 안전하게 이동시키고 위험한 칸마다 필요한 판정을 구분합니다.',
       intro:'이동 중 한 번의 실패로 턴이 끝날 수 있습니다. 이동 경로에서 닷지와 러시가 필요한 칸을 미리 세어 보세요.',
       steps:[
@@ -164,7 +164,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#move-actions'
     },
     {
-      title:'공 줍기와 안전한 확보',tag:'07 / LOOSE BALL',
+      title:'공 줍기와 안전한 확보',diagram:'looseBall',tag:'07 / LOOSE BALL',
       goal:'일반 공 줍기와 BB2025의 공 확보 행동을 상황에 맞게 선택합니다.',
       intro:'공이 바닥에 있을 때는 누가 공 칸으로 들어갈지, 상대가 얼마나 가까운지 먼저 확인하세요.',
       steps:[
@@ -179,7 +179,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#performing-a-secure-the-ball-action'
     },
     {
-      title:'블록·어시스트·블리츠',tag:'08 / CONTACT',
+      title:'블록·어시스트·블리츠',diagram:'blockDice',tag:'08 / CONTACT',
       goal:'블록 주사위 수와 결과 선택권을 먼저 계산하고 상대를 밀거나 넘어뜨립니다.',
       intro:'블록에서 중요한 것은 단순한 주사위 수만이 아닙니다. 힘이 낮은 쪽이 여러 주사위를 굴리더라도 결과 선택권은 힘이 높은 쪽에 있습니다.',
       steps:[
@@ -194,7 +194,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#performing-a-block-action'
     },
     {
-      title:'방어구·부상·파울',tag:'09 / INJURIES',
+      title:'방어구·부상·파울',diagram:'injuryFlow',tag:'09 / INJURIES',
       goal:'넘어진 뒤 어떤 표를 쓰는지 판단하고 파울의 퇴장 위험을 알 수 있습니다.',
       intro:'선수가 넘어졌다고 바로 경기에서 빠지는 것은 아닙니다. 방어구와 부상 판정을 순서대로 적용하세요.',
       steps:[
@@ -209,7 +209,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#stunty-injury-table'
     },
     {
-      title:'핸드오프·패스·캐치',tag:'10 / THE BALL',
+      title:'핸드오프·패스·캐치',diagram:'passFlow',tag:'10 / THE BALL',
       goal:'공을 전달할 때 선언, 거리, 판정, 턴오버 순서를 이해합니다.',
       intro:'가까운 아군에게는 핸드오프, 더 멀리 보내려면 패스를 씁니다. 두 행동 모두 팀 턴당 한 번씩 선언할 수 있습니다.',
       steps:[
@@ -224,7 +224,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#pass-actions'
     },
     {
-      title:'턴오버와 팀 재굴림',tag:'11 / RISK MANAGEMENT',
+      title:'턴오버와 팀 재굴림',diagram:'turnover',tag:'11 / RISK MANAGEMENT',
       goal:'언제 턴이 즉시 끝나는지 알고 재굴림을 쓸 순간을 고릅니다.',
       intro:'실패를 모두 막을 수는 없지만, 턴오버가 나기 전까지 중요한 선수들을 움직이는 순서는 결정할 수 있습니다.',
       steps:[
@@ -239,7 +239,7 @@ const GUIDE = {
       source:'https://bloodbowlbase.ru/bb2025/core_rules/rules_and_regulations/#team-re-rolls'
     },
     {
-      title:'터치다운과 다음 드라이브',tag:'12 / NEXT DRIVE',
+      title:'터치다운과 다음 드라이브',diagram:'touchdown',tag:'12 / NEXT DRIVE',
       goal:'득점 뒤의 정리 순서를 마치고 다음 킥오프 또는 하프 종료로 이어갑니다.',
       intro:'터치다운은 점수만 기록하고 끝나는 절차가 아닙니다. 리저브, KO, 비밀무기와 남은 턴도 확인하세요.',
       steps:[
@@ -253,5 +253,22 @@ const GUIDE = {
       example:'터치다운 직후 KO 선수가 D6에서 5를 냈습니다. 리저브에 놓고, 다음 드라이브의 11명에 포함할지 결정합니다.',
       source:'https://bloodbowlbase.ru/bb2025/core_rules/the_game_of_blood_bowl/#end-of-drive-sequence'
     }
-  ]
+  ],
+  diagrams: {
+    gameFlow:{type:'flow',title:'드라이브의 기본 흐름',note:'한 하프는 8라운드이며, 각 라운드에 양 팀이 한 턴씩 진행합니다.',items:[['배치·킥오프','새 드라이브 시작'],['리시브 팀 턴','먼저 행동'],['킥 팀 턴','이어서 행동'],['다음 라운드 또는 득점','득점·하프 종료 시 정리']]},
+    profile:{type:'compare',title:'선수 카드의 다섯 능력치',items:[['MA','이동 가능한 칸'],['ST','블록 힘 비교'],['AG','닷지·줍기·캐치'],['PA','패스 판정'],['AV','방어구 판정']]},
+    preGame:{type:'flow',title:'경기 전 확인 순서',items:[['출전 선수','로스터 확인'],['팬·날씨','경기 전 판정'],['리그 절차','해당하면 유도금 처리'],['킥 팀 결정','첫 드라이브 준비']]},
+    setup:{type:'pitch',title:'드라이브 시작 배치',note:'양 팀은 자기 진영에 최대 11명을 배치합니다. 킥 팀이 먼저 놓습니다.'},
+    turnFlow:{type:'flow',title:'한 팀 턴의 반복',items:[['턴 마커 +1','팀 턴 시작'],['선수 선택','선수당 최대 한 번'],['행동 선언','종류를 먼저 결정'],['판정 해결','완료하면 다음 선수'],['턴오버 또는 종료','남은 활성화 중단']]},
+    movement:{type:'flow',title:'이동하며 확인할 판정',note:'일어서기·닷지·러시는 해당 상황일 때만 적용합니다.',items:[['일어서기','엎드렸다면 먼저'],['MA만큼 이동','칸 수 확인'],['닷지','마크된 칸을 떠날 때'],['러시','추가 최대 2칸, 각 2+'],['실패','넘어지면 턴오버']]},
+    looseBall:{type:'compare',title:'바닥의 공을 줍는 두 방법',items:[['일반 줍기','공 칸에 진입 → AG 판정 → 성공 시 이동 계속'],['공 확보','주변 상대 조건 확인 → 공 칸에서 2+ → 성공 시 활성화 종료']]},
+    blockDice:{type:'compare',title:'최종 힘 비교와 블록 주사위',note:'힘이 높은 쪽의 코치가 여러 주사위 중 결과를 선택합니다.',items:[['같은 힘','주사위 1개'],['한쪽이 더 높음','주사위 2개'],['두 배를 초과','주사위 3개']]},
+    contactFlow:{type:'flow',title:'블록에서 부상까지',items:[['힘·어시스트','최종 ST 비교'],['블록 주사위','결과 하나 선택'],['밀기·넘어뜨리기','결과 적용'],['방어구','넘어졌다면 판정'],['부상','방어구가 깨졌다면']]},
+    injuryFlow:{type:'flow',title:'넘어진 선수의 판정 경로',note:'방어구가 버티면 부상 판정으로 가지 않습니다.',items:[['방어구 판정','깨졌는지 확인'],['부상 2D6','일반·Stunty 표 구분'],['기절·KO·사상자','표의 결과 적용'],['사상자 D16','필요한 경우에만']]},
+    passFlow:{type:'flow',title:'패스 해결 순서',items:[['목표·거리','패스 선언'],['PA 판정','거리·마킹 보정'],['인터셉트','가능한 상대 확인'],['캐치·착지','공의 최종 위치'],['소유 또는 턴오버','결과 적용']]},
+    turnover:{type:'branch',title:'판정 뒤 팀 턴은?',start:'행동 또는 판정 결과',items:[['계속 진행','성공했다면 다음 선수 활성화'],['즉시 턴오버','넘어짐·줍기 실패·패스 펌블 등'],['드라이브 종료','터치다운 또는 하프 종료 절차']]},
+    touchdown:{type:'flow',title:'터치다운 뒤 처리 순서',items:[['터치다운','서 있는 공 소지자'],['비밀무기','드라이브 종료 처리'],['종료 효과','지속 효과 정리'],['KO 회복','선수마다 D6 4+'],['새 드라이브','턴이 남으면 재배치']]},
+    rosterFlow:{type:'flow',title:'시작 로스터 계산',items:[['시작 예산','기본 1,000,000 gp'],['선수','처음에는 11–16명'],['팀 운영','재굴림·코치 등'],['남은 금고','사용 비용 차감'],['팀 가치','선수와 운영 비용 합산']]},
+    leagueFlow:{type:'flow',title:'리그 경기 후',items:[['경기 결과','점수·상금 기록'],['열성 팬','변동 처리'],['선수 성장','SPP 사용'],['영입·해고','다음 경기 준비'],['팀 가치','출전 불가 선수 반영']]}
+  }
 };
