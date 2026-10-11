@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#121813" />
+  <meta name="description" content="블러드 보울 팀 로스터와 예산을 빠르게 구성하는 빌더" />
+  <title>Blood Bowl | 로스터 빌더</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">BB<span>◎</span></span><span class="brand-copy">BLOOD BOWL <small>ROSTER BUILDER</small></span></div>
+    <div class="top-actions"><span class="save-state" id="save-state">● 자동 저장됨</span><button class="text-btn" id="reset-btn">새 로스터</button><button class="text-btn" id="import-btn">불러오기</button><input id="import-file" type="file" accept="application/json,.json" hidden><button class="outline-btn" id="export-btn">JSON 저장 ↗</button></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div><div class="eyebrow"><span class="eyebrow-line"></span> THE DUGOUT / 팀 구성</div><h1>승리는 <em>로스터</em>에서<br>시작된다.</h1><p>선수를 영입하고, 금고를 계산하고, 다음 킥오프를 준비하세요.</p></div>
+      <div class="hero-stamp"><span>COACH'S</span><strong>PLAYBOOK</strong><span>SEASON 2020</span></div>
+    </section>
+
+    <div class="workspace">
+      <section class="main-column">
+        <div class="panel setup-panel">
+          <div class="panel-head"><div><span class="section-index">01 / TEAM SETUP</span><h2>팀 설정</h2></div><span class="rules-badge">BB2020 기본 규칙</span></div>
+          <div class="setup-grid"><label>팀 이름<input id="team-name" maxlength="40" placeholder="예: 올드 월드 레이븐스" autocomplete="off"></label><label>종족<select id="team-select"></select></label><label>시작 예산<select id="budget-select"><option value="1000000">1,000,000 gp · 리그 기본</option><option value="1100000">1,100,000 gp</option><option value="1200000">1,200,000 gp</option><option value="1500000">1,500,000 gp</option></select></label></div>
+        </div>
+
+        <div class="panel players-panel">
+          <div class="panel-head"><div><span class="section-index">02 / SQUAD SELECTION</span><h2>선수 영입 <span id="player-count-title">0 / 16</span></h2></div><div class="head-note">포지션 카드를 눌러 선수를 추가하세요</div></div>
+          <div class="positions" id="positions"></div>
+        </div>
+
+        <div class="panel roster-panel">
+          <div class="panel-head"><div><span class="section-index">03 / MATCHDAY ROSTER</span><h2>출전 명단</h2></div><span class="count-pill" id="roster-pill">0명</span></div>
+          <div class="roster-table-wrap"><table><thead><tr><th>번호</th><th>선수 이름</th><th>포지션</th><th>비용</th><th><span class="sr-only">삭제</span></th></tr></thead><tbody id="roster-body"></tbody></table><div class="empty-roster" id="empty-roster"><div class="empty-icon">✳</div><strong>아직 영입한 선수가 없습니다</strong><span>위에서 포지션을 선택해 첫 선수를 영입하세요.</span></div></div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="budget-card"><div class="budget-kicker">TEAM TREASURY <span>₲</span></div><div class="budget-label">남은 예산</div><div class="budget-total" id="remaining">1,000,000 <small>gp</small></div><div class="budget-meter"><span id="budget-progress"></span></div><div class="budget-scale"><span id="spent-summary">사용 0 gp</span><span id="budget-summary">총 1,000,000 gp</span></div><div class="budget-divider"></div><div class="budget-stat"><span>선수</span><strong id="player-cost">0 gp</strong></div><div class="budget-stat"><span>팀 운영</span><strong id="staff-cost">0 gp</strong></div><div class="budget-stat total"><span>팀 가치</span><strong id="team-value">0 gp</strong></div></div>
+
+        <div class="panel staff-panel"><div class="panel-head"><div><span class="section-index">04 / TEAM SUPPORT</span><h2>팀 운영</h2></div></div><div id="staff-list"></div></div>
+
+        <div class="status-card" id="status-card"><div class="status-icon" id="status-icon">!</div><div><strong id="status-title">로스터를 구성하세요</strong><p id="status-detail">경기를 시작하려면 선수가 최소 11명 필요합니다.</p></div></div>
+        <button class="print-btn" id="print-btn">로스터 인쇄 <span>↗</span></button>
+        <p class="footnote">팬 제작 보조 도구 · Blood Bowl 2020 시작 로스터 기준. 최종 규칙과 팀 목록은 공식 자료를 확인하세요.</p>
+      </aside>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
