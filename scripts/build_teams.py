@@ -29,7 +29,11 @@ for file in sorted(root.glob('*.html')):
         position_name = raw_name.rstrip('*').strip()
         type_name = cells[1].xpath('./em')[0].text_content().strip('()').split(',')[0]
         stats = [x.text_content().strip() for x in cells[2:7]]
-        skills = [x.strip() for x in re.split(r'•', cells[7].text_content()) if x.strip()]
+        for deleted in cells[7].xpath('.//del'): deleted.drop_tree()
+        skill_names = [x.strip() for x in re.split(r'•', cells[7].text_content()) if x.strip() and x.strip() != '-']
+        skill_links = cells[7].xpath('.//a[contains(@href,"skills_and_traits/#")]')
+        assert len(skill_names) == len(skill_links), (slug, position_name)
+        skills = [[skill_name, link.get('href').split('#')[-1]] for skill_name, link in zip(skill_names, skill_links)]
         price = int(re.search(r'(\d+)K', cells[10].text_content()).group(1))*1000
         positions.append([f'p{index}', position_name, limit, price, type_name, stats, skills, big_guy])
     staff_h = article.xpath('.//h3[@id="staff"]')[0]
@@ -45,10 +49,10 @@ for file in sorted(root.glob('*.html')):
 # BB Roster lists Slann as a NAF team. Its new-team roster bundle lists these
 # four position entries (IDs 137, 138, 139, 46) and a 50K reroll.
 output['slann'] = dict(name='Slann',tier=2,reroll=50000,apothecary=True,positions=[
-    ['p0','Slann Lineman',16,60000,'Lineman',['6','3','3+','4+','9+'],['Pogo Stick'],False],
-    ['p1','Slann Catcher',2,80000,'Catcher',['7','2','2+','3+','8+'],['Diving Catch','On The Ball','Pogo Stick','Very Long Legs'],False],
-    ['p2','Slann Blitzer',2,100000,'Blitzer',['7','3','3+','4+','9+'],['Diving Tackle','Hit and Run','Jump Up','Pogo Stick'],False],
-    ['p3','Kroxigor',1,140000,'Big Guy',['6','5','5+','6+','10+'],['Bone Head','Loner (4+)','Mighty Blow','Prehensile Tail','Thick Skull'],True],
+    ['p0','Slann Lineman',16,60000,'Lineman',['6','3','3+','4+','9+'],[['Pogo Stick','pogo-active']],False],
+    ['p1','Slann Catcher',2,80000,'Catcher',['7','2','2+','3+','8+'],[['Diving Catch','diving-catch-active'],['On The Ball','on-the-ball-active'],['Pogo Stick','pogo-active'],['Very Long Legs','very-long-legs-active']],False],
+    ['p2','Slann Blitzer',2,100000,'Blitzer',['7','3','3+','4+','9+'],[['Diving Tackle','diving-tackle-active'],['Hit and Run','hit-and-run-active'],['Jump Up','jump-up-active'],['Pogo Stick','pogo-active']],False],
+    ['p3','Kroxigor',1,140000,'Big Guy',['6','5','5+','6+','10+'],[['Bone Head','bone-head-passive'],['Loner (4+)','loner-x-passive'],['Mighty Blow','mighty-blow-active'],['Prehensile Tail','prehensile-tail-active'],['Thick Skull','thick-skull-passive']],True],
 ],bigGuyMax=1,leagues=['Lustrian Superleague'],specialRules=[],nafTeam=True,source='https://bbroster.com/new-team')
 assert len(output)==31, len(output)
 assert sum(len(t['positions']) for t in output.values())==163

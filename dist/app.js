@@ -51,7 +51,15 @@ function staffCost(){const s=state.staff;return s.rerolls*team().reroll+s.assist
 function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));$('save-state').textContent='● 자동 저장됨'}
 function canAdd(p){return state.players.length<16 && state.players.filter(x=>x.pos===p[0]).length<p[2] && (!p[7] || !team().bigGuyMax || state.players.filter(x=>position(x.pos)?.[7]).length<team().bigGuyMax)}
 function renderPositions(){
-  $('positions').innerHTML=team().positions.map(p=>{const n=state.players.filter(x=>x.pos===p[0]).length;const stats=p[5].map((v,i)=>`<span><small>${['MA','ST','AG','PA','AV'][i]}</small>${v}</span>`).join('');return `<div class="position"><div class="position-top"><div><div class="position-name">${escapeHTML(p[1])}</div><div class="position-limit">${n} / ${p[2]}명</div></div><div class="position-cost">${(p[3]/1000).toLocaleString()}k</div></div><div class="position-stats">${stats}</div><div class="position-skills" title="${escapeHTML(p[6].join(', '))}">${p[6].length?escapeHTML(p[6].join(' · ')):'시작 스킬 없음'}</div><div class="position-bottom"><span class="position-type">${escapeHTML(p[4])}${p[7]&&team().bigGuyMax?' · 빅 가이 제한 '+team().bigGuyMax+'명':''}</span><button class="add-btn" data-add="${p[0]}" aria-label="${escapeHTML(p[1])} 영입" ${canAdd(p)?'':'disabled'}>+</button></div></div>`}).join('');
+  $('positions').innerHTML=team().positions.map(p=>{const n=state.players.filter(x=>x.pos===p[0]).length;const stats=p[5].map((v,i)=>`<span><small>${['MA','ST','AG','PA','AV'][i]}</small>${v}</span>`).join('');const skills=p[6].length?p[6].map(([name,id])=>`<button type="button" class="skill-chip" data-skill="${id}" aria-label="${escapeHTML(name)} 규칙 보기">${escapeHTML(name)}</button>`).join(''):'<span class="no-skills">시작 스킬 없음</span>';return `<div class="position"><div class="position-top"><div><div class="position-name">${escapeHTML(p[1])}</div><div class="position-limit">${n} / ${p[2]}명</div></div><div class="position-cost">${(p[3]/1000).toLocaleString()}k</div></div><div class="position-stats">${stats}</div><div class="position-skills">${skills}</div><div class="position-bottom"><span class="position-type">${escapeHTML(p[4])}${p[7]&&team().bigGuyMax?' · 빅 가이 제한 '+team().bigGuyMax+'명':''}</span><button class="add-btn" data-add="${p[0]}" aria-label="${escapeHTML(p[1])} 영입" ${canAdd(p)?'':'disabled'}>+</button></div></div>`}).join('');
+}
+function openSkill(id){
+  const skill=SKILLS[id];if(!skill)return;
+  $('skill-dialog-title').textContent=skill.title;
+  $('skill-dialog-kind').textContent=skill.kind==='active'?'ACTIVE · 액티브':'PASSIVE · 패시브';
+  $('skill-dialog-body').innerHTML=skill.paragraphs.map(p=>`<p>${escapeHTML(p)}</p>`).join('');
+  $('skill-dialog-source').href=skill.source;
+  $('skill-dialog').showModal();
 }
 function renderRoster(){
   $('player-count-title').textContent=`${state.players.length} / 16`;$('roster-pill').textContent=`${state.players.length}명`;
@@ -122,12 +130,15 @@ $('change-team-btn').addEventListener('click',()=>{draft={team:state.team,name:s
 $('team-name').addEventListener('input',e=>{state.name=e.target.value;save()});
 $('budget-select').addEventListener('change',e=>{state.budget=Number(e.target.value);render()});
 document.addEventListener('click',e=>{
+  const skill=e.target.closest('[data-skill]');if(skill){openSkill(skill.dataset.skill);return}
   const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
   const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
   const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id,name:''});render();return}
   const rem=e.target.closest('[data-remove]');if(rem){state.players=state.players.filter(p=>p.id!==rem.dataset.remove);render();return}
   const step=e.target.closest('[data-step]');if(step){const key=step.dataset.step,max=key==='rerolls'?8:key==='apothecary'?1:key==='fans'?3:6,min=key==='fans'?1:0;state.staff[key]=Math.min(max,Math.max(min,state.staff[key]+Number(step.dataset.delta)));render()}
 });
+$('skill-close').addEventListener('click',()=>$('skill-dialog').close());
+$('skill-dialog').addEventListener('click',e=>{if(e.target===$('skill-dialog'))$('skill-dialog').close()});
 document.addEventListener('input',e=>{if(e.target.matches('[data-name]')){const p=state.players.find(p=>p.id===e.target.dataset.name);if(p){p.name=e.target.value;save()}}});
 $('reset-btn').addEventListener('click',()=>{if(state.players.length&&!confirm('현재 로스터를 지우고 새로 시작할까요?'))return;state=fresh();draft={team:state.team,name:'',budget:state.budget,league:state.league};render();setStage('selection')});
 $('export-btn').addEventListener('click',()=>{const output={ruleset:'Blood Bowl 2025',...state,players:state.players.map(({pos,name})=>({pos,name}))};const blob=new Blob([JSON.stringify(output,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(state.name.trim().replace(/[^\p{L}\p{N}_-]+/gu,'-')||'blood-bowl-roster')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});

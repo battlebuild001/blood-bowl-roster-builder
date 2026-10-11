@@ -19,7 +19,10 @@
           "8+"
         ],
         [
-          "Dodge"
+          [
+            "Dodge",
+            "dodge-active"
+          ]
         ],
         false
       ],
@@ -37,10 +40,22 @@
           "8+"
         ],
         [
-          "Dodge",
-          "On the Ball",
-          "Pass",
-          "Safe Pass"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "On the Ball",
+            "on-the-ball-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Safe Pass",
+            "safe-pass-active"
+          ]
         ],
         false
       ],
@@ -58,9 +73,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Hit and Run",
-          "Jump Up"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Hit and Run",
+            "hit-and-run-active"
+          ],
+          [
+            "Jump Up",
+            "jump-up-active"
+          ]
         ],
         false
       ],
@@ -78,8 +102,14 @@
           "9+"
         ],
         [
-          "Defensive",
-          "Dodge"
+          [
+            "Defensive",
+            "defensive-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ]
         ],
         false
       ]
@@ -111,10 +141,22 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty",
-          "Thick Skull"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -132,8 +174,14 @@
           "10+"
         ],
         [
-          "Brawler",
-          "Grab"
+          [
+            "Brawler",
+            "brawler-active"
+          ],
+          [
+            "Grab",
+            "grab-active"
+          ]
         ],
         false
       ],
@@ -151,12 +199,30 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -191,7 +257,10 @@
           "8+"
         ],
         [
-          "Wrestle"
+          [
+            "Wrestle",
+            "wrestle-active"
+          ]
         ],
         false
       ],
@@ -209,9 +278,18 @@
           "9+"
         ],
         [
-          "Catch",
-          "Dauntless",
-          "Nerves of Steel"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Dauntless",
+            "dauntless-active"
+          ],
+          [
+            "Nerves of Steel",
+            "nerves-of-steel-active"
+          ]
         ],
         false
       ],
@@ -229,9 +307,18 @@
           "9+"
         ],
         [
-          "Dauntless",
-          "Nerves of Steel",
-          "Pass"
+          [
+            "Dauntless",
+            "dauntless-active"
+          ],
+          [
+            "Nerves of Steel",
+            "nerves-of-steel-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ]
         ],
         false
       ],
@@ -249,9 +336,18 @@
           "10+"
         ],
         [
-          "Block",
-          "Dauntless",
-          "Steady Footing"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Dauntless",
+            "dauntless-active"
+          ],
+          [
+            "Steady Footing",
+            "steady-footing-active"
+          ]
         ],
         false
       ]
@@ -283,8 +379,14 @@
           "9+"
         ],
         [
-          "Horns",
-          "Thick Skull"
+          [
+            "Horns",
+            "horns-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -302,7 +404,10 @@
           "10+"
         ],
         [
-          "Arm Bar"
+          [
+            "Arm Bar",
+            "arm-bar-active"
+          ]
         ],
         false
       ],
@@ -320,13 +425,34 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         true
       ],
@@ -344,11 +470,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         true
       ],
@@ -366,12 +507,30 @@
           "9+"
         ],
         [
-          "Frenzy",
-          "Horns",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Unchannelled Fury"
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Horns",
+            "horns-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unchannelled Fury",
+            "unchannelled-fury-passive"
+          ]
         ],
         true
       ]
@@ -404,9 +563,7 @@
           "4+",
           "8+"
         ],
-        [
-          "-"
-        ],
+        [],
         false
       ],
       [
@@ -423,8 +580,14 @@
           "8+"
         ],
         [
-          "Shadowing",
-          "Stab"
+          [
+            "Shadowing",
+            "shadowing-active"
+          ],
+          [
+            "Stab",
+            "stab-active"
+          ]
         ],
         false
       ],
@@ -442,9 +605,18 @@
           "10+"
         ],
         [
-          "Block",
-          "Iron Hard Skin",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Iron Hard Skin",
+            "iron-hard-skin-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -462,10 +634,22 @@
           "10+"
         ],
         [
-          "Brawler",
-          "Breathe Fire",
-          "Disturbing Presence",
-          "Thick Skull"
+          [
+            "Brawler",
+            "brawler-active"
+          ],
+          [
+            "Breathe Fire",
+            "breathe-fire-active"
+          ],
+          [
+            "Disturbing Presence",
+            "disturbing-presence-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -483,10 +667,22 @@
           "10+"
         ],
         [
-          "Sprint",
-          "Sure Feet",
-          "Thick Skull",
-          "Unsteady"
+          [
+            "Sprint",
+            "sprint-active"
+          ],
+          [
+            "Sure Feet",
+            "sure-feet-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -504,12 +700,30 @@
           "9+"
         ],
         [
-          "Frenzy",
-          "Horns",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Unchannelled Fury"
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Horns",
+            "horns-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unchannelled Fury",
+            "unchannelled-fury-passive"
+          ]
         ],
         false
       ]
@@ -543,7 +757,10 @@
           "9+"
         ],
         [
-          "Animosity (All)"
+          [
+            "Animosity (All)",
+            "animosity-x-active"
+          ]
         ],
         false
       ],
@@ -561,10 +778,22 @@
           "8+"
         ],
         [
-          "Animosity (All)",
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Animosity (All)",
+            "animosity-x-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -582,7 +811,10 @@
           "10+"
         ],
         [
-          "Animosity (All)"
+          [
+            "Animosity (All)",
+            "animosity-x-active"
+          ]
         ],
         false
       ],
@@ -600,7 +832,10 @@
           "8+"
         ],
         [
-          "Animosity (All)"
+          [
+            "Animosity (All)",
+            "animosity-x-active"
+          ]
         ],
         false
       ],
@@ -618,7 +853,10 @@
           "9+"
         ],
         [
-          "Animosity (All)"
+          [
+            "Animosity (All)",
+            "animosity-x-active"
+          ]
         ],
         false
       ],
@@ -636,9 +874,18 @@
           "9+"
         ],
         [
-          "Animosity (All)",
-          "Pass",
-          "Sure Hands"
+          [
+            "Animosity (All)",
+            "animosity-x-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ]
         ],
         false
       ],
@@ -656,13 +903,34 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         true
       ],
@@ -680,11 +948,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (4+ 3+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner ( 3+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         true
       ],
@@ -702,12 +985,30 @@
           "9+"
         ],
         [
-          "Frenzy",
-          "Horns",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Unchannelled Fury"
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Horns",
+            "horns-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unchannelled Fury",
+            "unchannelled-fury-passive"
+          ]
         ],
         true
       ],
@@ -725,11 +1026,26 @@
           "9+"
         ],
         [
-          "Animal Savagery",
-          "Frenzy",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Prehensile Tail"
+          [
+            "Animal Savagery",
+            "animal-savagery-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Prehensile Tail",
+            "prehensile-tail-active"
+          ]
         ],
         true
       ]
@@ -766,9 +1082,7 @@
           "3+",
           "9+"
         ],
-        [
-          "-"
-        ],
+        [],
         false
       ],
       [
@@ -785,8 +1099,14 @@
           "8+"
         ],
         [
-          "Dump-off",
-          "Punt"
+          [
+            "Dump-off",
+            "dump-off-active"
+          ],
+          [
+            "Punt",
+            "punt-active"
+          ]
         ],
         false
       ],
@@ -804,9 +1124,18 @@
           "8+"
         ],
         [
-          "Hit and Run",
-          "Shadowing",
-          "Stab"
+          [
+            "Hit and Run",
+            "hit-and-run-active"
+          ],
+          [
+            "Shadowing",
+            "shadowing-active"
+          ],
+          [
+            "Stab",
+            "stab-active"
+          ]
         ],
         false
       ],
@@ -824,7 +1153,10 @@
           "9+"
         ],
         [
-          "Block"
+          [
+            "Block",
+            "block-active"
+          ]
         ],
         false
       ],
@@ -842,9 +1174,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Frenzy",
-          "Jump Up"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Jump Up",
+            "jump-up-active"
+          ]
         ],
         false
       ]
@@ -876,9 +1217,18 @@
           "10+"
         ],
         [
-          "Block",
-          "Defensive",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Defensive",
+            "defensive-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -896,9 +1246,18 @@
           "9+"
         ],
         [
-          "Sprint",
-          "Sure Hands",
-          "Thick Skull"
+          [
+            "Sprint",
+            "sprint-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -916,10 +1275,22 @@
           "10+"
         ],
         [
-          "Block",
-          "Diving Tackle",
-          "Tackle",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Diving Tackle",
+            "diving-tackle-active"
+          ],
+          [
+            "Tackle",
+            "tackle-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -937,11 +1308,26 @@
           "9+"
         ],
         [
-          "Block",
-          "Dauntless",
-          "Frenzy",
-          "Hatred (Troll)",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Dauntless",
+            "dauntless-active"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Hatred (Troll)",
+            "hatred-x-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -959,14 +1345,38 @@
           "11+"
         ],
         [
-          "Break Tackle",
-          "Dirty Player",
-          "Juggernaut",
-          "Loner (4+)",
-          "Mighty Blow",
-          "No Ball",
-          "Secret Weapon",
-          "Stand Firm"
+          [
+            "Break Tackle",
+            "break-tackle-active"
+          ],
+          [
+            "Dirty Player",
+            "dirty-player-active"
+          ],
+          [
+            "Juggernaut",
+            "juggernaut-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "No Ball",
+            "no-ball-passive"
+          ],
+          [
+            "Secret Weapon",
+            "secret-weapon-passive"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ]
         ],
         false
       ]
@@ -1001,7 +1411,10 @@
           "8+"
         ],
         [
-          "Fumblerooski"
+          [
+            "Fumblerooski",
+            "fumblerooski-active"
+          ]
         ],
         false
       ],
@@ -1019,8 +1432,14 @@
           "8+"
         ],
         [
-          "Hail Mary Pass",
-          "Pass"
+          [
+            "Hail Mary Pass",
+            "hail-mary-pass-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ]
         ],
         false
       ],
@@ -1038,9 +1457,18 @@
           "8+"
         ],
         [
-          "Catch",
-          "Diving Catch",
-          "Nerves of Steel"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Diving Catch",
+            "diving-catch-active"
+          ],
+          [
+            "Nerves of Steel",
+            "nerves-of-steel-active"
+          ]
         ],
         false
       ],
@@ -1058,8 +1486,14 @@
           "9+"
         ],
         [
-          "Block",
-          "Sidestep"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ]
         ],
         false
       ]
@@ -1091,10 +1525,22 @@
           "7+"
         ],
         [
-          "Jump Up",
-          "Right Stuff",
-          "Stunty",
-          "Wrestle"
+          [
+            "Jump Up",
+            "jump-up-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Wrestle",
+            "wrestle-active"
+          ]
         ],
         false
       ],
@@ -1112,10 +1558,22 @@
           "6+"
         ],
         [
-          "Dodge",
-          "My Ball",
-          "Sidestep",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "My Ball",
+            "my-ball-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1133,10 +1591,22 @@
           "7+"
         ],
         [
-          "Jump Up",
-          "Stunty",
-          "Trickster",
-          "Wrestle"
+          [
+            "Jump Up",
+            "jump-up-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Trickster",
+            "trickster-active"
+          ],
+          [
+            "Wrestle",
+            "wrestle-active"
+          ]
         ],
         false
       ],
@@ -1154,10 +1624,22 @@
           "8+"
         ],
         [
-          "Guard",
-          "Jump Up",
-          "Stunty",
-          "Wrestle"
+          [
+            "Guard",
+            "guard-active"
+          ],
+          [
+            "Jump Up",
+            "jump-up-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Wrestle",
+            "wrestle-active"
+          ]
         ],
         false
       ],
@@ -1175,13 +1657,34 @@
           "11+"
         ],
         [
-          "Mighty Blow",
-          "Stand Firm",
-          "Strong Arm",
-          "Take Root",
-          "Thick Skull",
-          "Throw Team-mate",
-          "Timmm-ber!"
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Strong Arm",
+            "strong-arm-active"
+          ],
+          [
+            "Take Root",
+            "take-root-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ],
+          [
+            "Timmm-ber!",
+            "timmm-ber-passive"
+          ]
         ],
         false
       ]
@@ -1213,9 +1716,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1233,10 +1745,22 @@
           "8+"
         ],
         [
-          "Chainsaw",
-          "No Ball",
-          "Secret Weapon",
-          "Stunty"
+          [
+            "Chainsaw",
+            "chainsaw-active"
+          ],
+          [
+            "No Ball",
+            "no-ball-passive"
+          ],
+          [
+            "Secret Weapon",
+            "secret-weapon-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1254,10 +1778,22 @@
           "8+"
         ],
         [
-          "Bombardier",
-          "Dodge",
-          "Secret Weapon",
-          "Stunty"
+          [
+            "Bombardier",
+            "bombardier-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Secret Weapon",
+            "secret-weapon-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1275,12 +1811,30 @@
           "8+"
         ],
         [
-          "Dirty Player (+1)",
-          "Disturbing Presence",
-          "Dodge",
-          "Right Stuff",
-          "Stunty",
-          "Taunt"
+          [
+            "Dirty Player (+1)",
+            "dirty-player-active"
+          ],
+          [
+            "Disturbing Presence",
+            "disturbing-presence-passive"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Taunt",
+            "taunt-active"
+          ]
         ],
         false
       ],
@@ -1298,10 +1852,22 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty",
-          "Swoop"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Swoop",
+            "swoop-active"
+          ]
         ],
         false
       ],
@@ -1319,10 +1885,22 @@
           "8+"
         ],
         [
-          "Ball & Chain",
-          "No Ball",
-          "Secret Weapon",
-          "Stunty"
+          [
+            "Ball & Chain",
+            "ball-chain-active"
+          ],
+          [
+            "No Ball",
+            "no-ball-passive"
+          ],
+          [
+            "Secret Weapon",
+            "secret-weapon-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1340,9 +1918,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Pogo",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Pogo",
+            "pogo-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1360,12 +1947,30 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -1399,9 +2004,18 @@
           "7+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1419,9 +2033,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Fend",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Fend",
+            "fend-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1439,11 +2062,26 @@
           "7+"
         ],
         [
-          "Catch",
-          "Dodge",
-          "Right Stuff",
-          "Sprint",
-          "Stunty"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Sprint",
+            "sprint-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1461,13 +2099,34 @@
           "11+"
         ],
         [
-          "Mighty Blow",
-          "Stand Firm",
-          "Strong Arm",
-          "Take Root",
-          "Thick Skull",
-          "Throw Team-mate",
-          "Timmm-ber!"
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Strong Arm",
+            "strong-arm-active"
+          ],
+          [
+            "Take Root",
+            "take-root-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ],
+          [
+            "Timmm-ber!",
+            "timmm-ber-passive"
+          ]
         ],
         false
       ]
@@ -1515,9 +2174,18 @@
           "9+"
         ],
         [
-          "Cloud Burster",
-          "Pass",
-          "Safe Pass"
+          [
+            "Cloud Burster",
+            "cloud-burster-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Safe Pass",
+            "safe-pass-active"
+          ]
         ],
         false
       ],
@@ -1535,9 +2203,18 @@
           "9+"
         ],
         [
-          "Block",
-          "My Ball",
-          "Steady Footing"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "My Ball",
+            "my-ball-passive"
+          ],
+          [
+            "Steady Footing",
+            "steady-footing-active"
+          ]
         ],
         false
       ],
@@ -1555,8 +2232,14 @@
           "9+"
         ],
         [
-          "Claws",
-          "Wrestle"
+          [
+            "Claws",
+            "claws-passive"
+          ],
+          [
+            "Wrestle",
+            "wrestle-active"
+          ]
         ],
         false
       ]
@@ -1604,9 +2287,18 @@
           "7+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1624,8 +2316,14 @@
           "8+"
         ],
         [
-          "Catch",
-          "Dodge"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ]
         ],
         false
       ],
@@ -1643,8 +2341,14 @@
           "9+"
         ],
         [
-          "Pass",
-          "Sure Hands"
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ]
         ],
         false
       ],
@@ -1662,8 +2366,14 @@
           "9+"
         ],
         [
-          "Block",
-          "Tackle"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Tackle",
+            "tackle-active"
+          ]
         ],
         false
       ],
@@ -1681,11 +2391,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (3+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner (3+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -1719,7 +2444,10 @@
           "8+"
         ],
         [
-          "Fend"
+          [
+            "Fend",
+            "fend-active"
+          ]
         ],
         false
       ],
@@ -1737,9 +2465,18 @@
           "9+"
         ],
         [
-          "Give and Go",
-          "Pass",
-          "Pro"
+          [
+            "Give and Go",
+            "give-and-go-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Pro",
+            "pro-active"
+          ]
         ],
         false
       ],
@@ -1757,8 +2494,14 @@
           "9+"
         ],
         [
-          "Stand Firm",
-          "Wrestle"
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Wrestle",
+            "wrestle-active"
+          ]
         ],
         false
       ],
@@ -1776,9 +2519,18 @@
           "9+"
         ],
         [
-          "Block",
-          "Catch",
-          "Pro"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Pro",
+            "pro-active"
+          ]
         ],
         false
       ],
@@ -1796,11 +2548,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (3+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner (3+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -1832,7 +2599,10 @@
           "8+"
         ],
         [
-          "Frenzy"
+          [
+            "Frenzy",
+            "frenzy-active"
+          ]
         ],
         false
       ],
@@ -1850,10 +2620,22 @@
           "9+"
         ],
         [
-          "Horns",
-          "Juggernaut",
-          "Jump Up",
-          "Thick Skull"
+          [
+            "Horns",
+            "horns-active"
+          ],
+          [
+            "Juggernaut",
+            "juggernaut-active"
+          ],
+          [
+            "Jump Up",
+            "jump-up-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -1871,7 +2653,10 @@
           "10+"
         ],
         [
-          "Frenzy"
+          [
+            "Frenzy",
+            "frenzy-active"
+          ]
         ],
         false
       ],
@@ -1889,11 +2674,26 @@
           "9+"
         ],
         [
-          "Claws",
-          "Frenzy",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Unchannelled Fury"
+          [
+            "Claws",
+            "claws-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Unchannelled Fury",
+            "unchannelled-fury-passive"
+          ]
         ],
         false
       ]
@@ -1928,8 +2728,14 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1947,10 +2753,22 @@
           "8+"
         ],
         [
-          "Dodge",
-          "On the Ball",
-          "Shadowing",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "On the Ball",
+            "on-the-ball-active"
+          ],
+          [
+            "Shadowing",
+            "shadowing-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -1968,8 +2786,14 @@
           "10+"
         ],
         [
-          "Juggernaut",
-          "Unsteady"
+          [
+            "Juggernaut",
+            "juggernaut-active"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -1987,11 +2811,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Prehensile Tail",
-          "Thick Skull"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Prehensile Tail",
+            "prehensile-tail-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ]
@@ -2023,9 +2862,18 @@
           "9+"
         ],
         [
-          "Eye Gouge",
-          "Regeneration",
-          "Unsteady"
+          [
+            "Eye Gouge",
+            "eye-gouge-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2043,8 +2891,14 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Regeneration"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ],
@@ -2062,11 +2916,26 @@
           "9+"
         ],
         [
-          "Block",
-          "Foul Appearance",
-          "No Ball",
-          "Regeneration",
-          "Sidestep"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Foul Appearance",
+            "foul-appearance-passive"
+          ],
+          [
+            "No Ball",
+            "no-ball-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ]
         ],
         false
       ],
@@ -2084,10 +2953,22 @@
           "10+"
         ],
         [
-          "Regeneration",
-          "Stand Firm",
-          "Thick Skull",
-          "Unsteady"
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2105,9 +2986,18 @@
           "9+"
         ],
         [
-          "Claws",
-          "Frenzy",
-          "Regeneration"
+          [
+            "Claws",
+            "claws-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ]
@@ -2141,10 +3031,22 @@
           "8+"
         ],
         [
-          "Block",
-          "Drunkard",
-          "Thick Skull",
-          "Unsteady"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Drunkard",
+            "drunkard-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2162,11 +3064,26 @@
           "6+"
         ],
         [
-          "Dodge",
-          "No Ball",
-          "Pick-me-up",
-          "Stunty",
-          "Titchy"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "No Ball",
+            "no-ball-passive"
+          ],
+          [
+            "Pick-me-up",
+            "pick-me-up-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Titchy",
+            "titchy-passive"
+          ]
         ],
         false
       ],
@@ -2184,9 +3101,18 @@
           "8+"
         ],
         [
-          "Block",
-          "Frenzy",
-          "Jump Up"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Jump Up",
+            "jump-up-active"
+          ]
         ],
         false
       ],
@@ -2204,10 +3130,22 @@
           "8+"
         ],
         [
-          "Catch",
-          "Dauntless",
-          "Pass",
-          "Strip Ball"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Dauntless",
+            "dauntless-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Strip Ball",
+            "strip-ball-active"
+          ]
         ],
         false
       ],
@@ -2225,8 +3163,14 @@
           "9+"
         ],
         [
-          "Frenzy",
-          "Unsteady"
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2244,11 +3188,26 @@
           "9+"
         ],
         [
-          "Claws",
-          "Disturbing Presence",
-          "Frenzy",
-          "Loner (4+)",
-          "Unchannelled Fury"
+          [
+            "Claws",
+            "claws-passive"
+          ],
+          [
+            "Disturbing Presence",
+            "disturbing-presence-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Unchannelled Fury",
+            "unchannelled-fury-passive"
+          ]
         ],
         false
       ]
@@ -2282,8 +3241,14 @@
           "9+"
         ],
         [
-          "Decay",
-          "Plague Ridden"
+          [
+            "Decay",
+            "decay-passive"
+          ],
+          [
+            "Plague Ridden",
+            "plague-ridden-passive"
+          ]
         ],
         false
       ],
@@ -2301,11 +3266,26 @@
           "9+"
         ],
         [
-          "Horns",
-          "Plague Ridden",
-          "Regeneration",
-          "Steady Footing",
-          "Thick Skull"
+          [
+            "Horns",
+            "horns-active"
+          ],
+          [
+            "Plague Ridden",
+            "plague-ridden-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Steady Footing",
+            "steady-footing-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2323,12 +3303,30 @@
           "10+"
         ],
         [
-          "Disturbing Presence",
-          "Foul Appearance",
-          "Plague Ridden",
-          "Regeneration",
-          "Stand Firm",
-          "Unsteady"
+          [
+            "Disturbing Presence",
+            "disturbing-presence-passive"
+          ],
+          [
+            "Foul Appearance",
+            "foul-appearance-passive"
+          ],
+          [
+            "Plague Ridden",
+            "plague-ridden-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2346,15 +3344,42 @@
           "10+"
         ],
         [
-          "Disturbing Presence",
-          "Foul Appearance",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Pick-me-up",
-          "Plague Ridden",
-          "Really Stupid",
-          "Regeneration",
-          "Tentacles"
+          [
+            "Disturbing Presence",
+            "disturbing-presence-passive"
+          ],
+          [
+            "Foul Appearance",
+            "foul-appearance-passive"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Pick-me-up",
+            "pick-me-up-active"
+          ],
+          [
+            "Plague Ridden",
+            "plague-ridden-passive"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Tentacles",
+            "tentacles-active"
+          ]
         ],
         false
       ]
@@ -2389,11 +3414,26 @@
           "6+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Sidestep",
-          "Stunty",
-          "Titchy"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Titchy",
+            "titchy-passive"
+          ]
         ],
         false
       ],
@@ -2411,10 +3451,22 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Mighty Blow",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ],
@@ -2432,10 +3484,22 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Kick Team-mate",
-          "Mighty Blow",
-          "Thick Skull"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Kick Team-mate",
+            "kick-team-mate-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ]
@@ -2486,9 +3550,18 @@
           "7+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -2506,8 +3579,14 @@
           "8+"
         ],
         [
-          "Catch",
-          "Dodge"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ]
         ],
         false
       ],
@@ -2525,9 +3604,18 @@
           "10+"
         ],
         [
-          "Block",
-          "Defensive",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Defensive",
+            "defensive-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2545,8 +3633,14 @@
           "9+"
         ],
         [
-          "Pass",
-          "Sure Hands"
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ]
         ],
         false
       ],
@@ -2564,9 +3658,18 @@
           "9+"
         ],
         [
-          "Sprint",
-          "Sure Hands",
-          "Thick Skull"
+          [
+            "Sprint",
+            "sprint-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2584,8 +3687,14 @@
           "9+"
         ],
         [
-          "Block",
-          "Tackle"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Tackle",
+            "tackle-active"
+          ]
         ],
         false
       ],
@@ -2603,10 +3712,22 @@
           "10+"
         ],
         [
-          "Block",
-          "Diving Tackle",
-          "Tackle",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Diving Tackle",
+            "diving-tackle-active"
+          ],
+          [
+            "Tackle",
+            "tackle-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2624,11 +3745,26 @@
           "9+"
         ],
         [
-          "Block",
-          "Dauntless",
-          "Frenzy",
-          "Hatred (Troll)",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Dauntless",
+            "dauntless-active"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Hatred (Troll)",
+            "hatred-x-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2646,11 +3782,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (3+)",
-          "Mighty Blow",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner (3+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         true
       ],
@@ -2668,14 +3819,38 @@
           "11+"
         ],
         [
-          "Loner (4+)",
-          "Mighty Blow",
-          "Stand Firm",
-          "Strong Arm",
-          "Take Root",
-          "Thick Skull",
-          "Throw Team-mate",
-          "Timmm-ber!"
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Strong Arm",
+            "strong-arm-active"
+          ],
+          [
+            "Take Root",
+            "take-root-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ],
+          [
+            "Timmm-ber!",
+            "timmm-ber-passive"
+          ]
         ],
         true
       ]
@@ -2723,9 +3898,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -2743,8 +3927,14 @@
           "9+"
         ],
         [
-          "Pass",
-          "Sure Hands"
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ]
         ],
         false
       ],
@@ -2762,8 +3952,14 @@
           "10+"
         ],
         [
-          "Block",
-          "Break Tackle"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Break Tackle",
+            "break-tackle-active"
+          ]
         ],
         false
       ],
@@ -2781,10 +3977,22 @@
           "10+"
         ],
         [
-          "Mighty Blow",
-          "Taunt",
-          "Thick Skull",
-          "Unsteady"
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Taunt",
+            "taunt-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2802,13 +4010,34 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -2843,8 +4072,14 @@
           "8+"
         ],
         [
-          "Regeneration",
-          "Thick Skull"
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2862,9 +4097,18 @@
           "9+"
         ],
         [
-          "Eye Gouge",
-          "Regeneration",
-          "Unsteady"
+          [
+            "Eye Gouge",
+            "eye-gouge-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Unsteady",
+            "unsteady-passive"
+          ]
         ],
         false
       ],
@@ -2882,8 +4126,14 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Regeneration"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ],
@@ -2901,10 +4151,22 @@
           "9+"
         ],
         [
-          "Block",
-          "Regeneration",
-          "Tackle",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Tackle",
+            "tackle-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -2922,8 +4184,14 @@
           "10+"
         ],
         [
-          "Mighty Blow",
-          "Regeneration"
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ]
@@ -2973,8 +4241,14 @@
           "8+"
         ],
         [
-          "Pass",
-          "Sure Hands"
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ]
         ],
         false
       ],
@@ -2992,8 +4266,14 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Stab"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Stab",
+            "stab-active"
+          ]
         ],
         false
       ],
@@ -3011,8 +4291,14 @@
           "9+"
         ],
         [
-          "Block",
-          "Strip Ball"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Strip Ball",
+            "strip-ball-active"
+          ]
         ],
         false
       ],
@@ -3030,11 +4316,26 @@
           "9+"
         ],
         [
-          "Animal Savagery",
-          "Frenzy",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Prehensile Tail"
+          [
+            "Animal Savagery",
+            "animal-savagery-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Prehensile Tail",
+            "prehensile-tail-active"
+          ]
         ],
         false
       ]
@@ -3066,12 +4367,30 @@
           "6+"
         ],
         [
-          "Dodge",
-          "Insignificant",
-          "Right Stuff",
-          "Sidestep",
-          "Stunty",
-          "Titchy"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Insignificant",
+            "insignificant-passive"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Titchy",
+            "titchy-passive"
+          ]
         ],
         false
       ],
@@ -3089,11 +4408,26 @@
           "6+"
         ],
         [
-          "Dodge",
-          "Pogo",
-          "Right Stuff",
-          "Sidestep",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Pogo",
+            "pogo-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -3111,11 +4445,26 @@
           "6+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Sidestep",
-          "Sprint",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Sprint",
+            "sprint-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -3133,13 +4482,34 @@
           "6+"
         ],
         [
-          "Bombardier",
-          "Dodge",
-          "Right Stuff",
-          "Secret Weapon",
-          "Sidestep",
-          "Stunty",
-          "Titchy"
+          [
+            "Bombardier",
+            "bombardier-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Secret Weapon",
+            "secret-weapon-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Titchy",
+            "titchy-passive"
+          ]
         ],
         false
       ],
@@ -3157,11 +4527,26 @@
           "9+"
         ],
         [
-          "Dirty Player",
-          "Juggernaut",
-          "Mighty Blow",
-          "Really Stupid",
-          "Stand Firm"
+          [
+            "Dirty Player",
+            "dirty-player-active"
+          ],
+          [
+            "Juggernaut",
+            "juggernaut-active"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ]
         ],
         false
       ],
@@ -3179,12 +4564,30 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -3220,8 +4623,14 @@
           "8+"
         ],
         [
-          "Regeneration",
-          "Thick Skull"
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -3239,10 +4648,22 @@
           "9+"
         ],
         [
-          "Pass",
-          "Regeneration",
-          "Sure Hands",
-          "Thick Skull"
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -3260,9 +4681,18 @@
           "9+"
         ],
         [
-          "Block",
-          "Regeneration",
-          "Thick Skull"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         false
       ],
@@ -3280,9 +4710,18 @@
           "10+"
         ],
         [
-          "Brawler",
-          "Decay",
-          "Regeneration"
+          [
+            "Brawler",
+            "brawler-active"
+          ],
+          [
+            "Decay",
+            "decay-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ]
@@ -3316,9 +4755,18 @@
           "8+"
         ],
         [
-          "Dodge",
-          "Right Stuff",
-          "Stunty"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ]
         ],
         false
       ],
@@ -3336,12 +4784,30 @@
           "6+"
         ],
         [
-          "Dodge",
-          "Insignificant",
-          "Right Stuff",
-          "Sidestep",
-          "Stunty",
-          "Titchy"
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Insignificant",
+            "insignificant-passive"
+          ],
+          [
+            "Right Stuff",
+            "right-stuff-passive"
+          ],
+          [
+            "Sidestep",
+            "sidestep-active"
+          ],
+          [
+            "Stunty",
+            "stunty-passive"
+          ],
+          [
+            "Titchy",
+            "titchy-passive"
+          ]
         ],
         false
       ],
@@ -3359,7 +4825,10 @@
           "8+"
         ],
         [
-          "Animosity (Goblin)"
+          [
+            "Animosity (Goblin)",
+            "animosity-x-active"
+          ]
         ],
         false
       ],
@@ -3377,9 +4846,18 @@
           "8+"
         ],
         [
-          "Animosity (Goblin)",
-          "Pass",
-          "Sure Hands"
+          [
+            "Animosity (Goblin)",
+            "animosity-x-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Sure Hands",
+            "sure-hands-active"
+          ]
         ],
         false
       ],
@@ -3397,9 +4875,18 @@
           "8+"
         ],
         [
-          "Animosity (Goblin)",
-          "Dodge",
-          "Stab"
+          [
+            "Animosity (Goblin)",
+            "animosity-x-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Stab",
+            "stab-active"
+          ]
         ],
         false
       ],
@@ -3417,9 +4904,18 @@
           "9+"
         ],
         [
-          "Animosity (Goblin)",
-          "Block",
-          "Strip Ball"
+          [
+            "Animosity (Goblin)",
+            "animosity-x-active"
+          ],
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Strip Ball",
+            "strip-ball-active"
+          ]
         ],
         false
       ],
@@ -3437,13 +4933,34 @@
           "10+"
         ],
         [
-          "Always Hungry",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Projectile Vomit",
-          "Really Stupid",
-          "Regeneration",
-          "Throw Team-mate"
+          [
+            "Always Hungry",
+            "always-hungry-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Projectile Vomit",
+            "projectile-vomit-active"
+          ],
+          [
+            "Really Stupid",
+            "really-stupid-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         true
       ],
@@ -3461,11 +4978,26 @@
           "9+"
         ],
         [
-          "Animal Savagery",
-          "Frenzy",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Prehensile Tail"
+          [
+            "Animal Savagery",
+            "animal-savagery-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Prehensile Tail",
+            "prehensile-tail-active"
+          ]
         ],
         true
       ]
@@ -3515,9 +5047,18 @@
           "8+"
         ],
         [
-          "Bloodlust (2+)",
-          "Hypnotic Gaze",
-          "Regeneration"
+          [
+            "Bloodlust (2+)",
+            "bloodlust-x-passive"
+          ],
+          [
+            "Hypnotic Gaze",
+            "hypnotic-gaze-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ],
@@ -3535,10 +5076,22 @@
           "9+"
         ],
         [
-          "Bloodlust (2+)",
-          "Hypnotic Gaze",
-          "Pass",
-          "Regeneration"
+          [
+            "Bloodlust (2+)",
+            "bloodlust-x-passive"
+          ],
+          [
+            "Hypnotic Gaze",
+            "hypnotic-gaze-active"
+          ],
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ],
@@ -3556,10 +5109,22 @@
           "9+"
         ],
         [
-          "Bloodlust (3+)",
-          "Hypnotic Gaze",
-          "Juggernaut",
-          "Regeneration"
+          [
+            "Bloodlust (3+)",
+            "bloodlust-x-passive"
+          ],
+          [
+            "Hypnotic Gaze",
+            "hypnotic-gaze-active"
+          ],
+          [
+            "Juggernaut",
+            "juggernaut-active"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ],
@@ -3577,11 +5142,26 @@
           "10+"
         ],
         [
-          "Bloodlust (3+)",
-          "Claws",
-          "Frenzy",
-          "Loner (4+)",
-          "Regeneration"
+          [
+            "Bloodlust (3+)",
+            "bloodlust-x-passive"
+          ],
+          [
+            "Claws",
+            "claws-passive"
+          ],
+          [
+            "Frenzy",
+            "frenzy-active"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Regeneration",
+            "regeneration-passive"
+          ]
         ],
         false
       ]
@@ -3631,8 +5211,14 @@
           "8+"
         ],
         [
-          "Pass",
-          "Safe Pair of Hands"
+          [
+            "Pass",
+            "pass-active"
+          ],
+          [
+            "Safe Pair of Hands",
+            "safe-pair-of-hands-active"
+          ]
         ],
         false
       ],
@@ -3650,9 +5236,18 @@
           "8+"
         ],
         [
-          "Catch",
-          "Dodge",
-          "Sprint"
+          [
+            "Catch",
+            "catch-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Sprint",
+            "sprint-active"
+          ]
         ],
         false
       ],
@@ -3670,9 +5265,18 @@
           "8+"
         ],
         [
-          "Block",
-          "Dodge",
-          "Leap"
+          [
+            "Block",
+            "block-active"
+          ],
+          [
+            "Dodge",
+            "dodge-active"
+          ],
+          [
+            "Leap",
+            "leap-active"
+          ]
         ],
         false
       ],
@@ -3690,13 +5294,34 @@
           "11+"
         ],
         [
-          "Loner (4+)",
-          "Mighty Blow",
-          "Stand Firm",
-          "Strong Arm",
-          "Take Root",
-          "Thick Skull",
-          "Throw Team-mate"
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Stand Firm",
+            "stand-firm-active"
+          ],
+          [
+            "Strong Arm",
+            "strong-arm-active"
+          ],
+          [
+            "Take Root",
+            "take-root-passive"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ],
+          [
+            "Throw Team-mate",
+            "throw-team-mate-active"
+          ]
         ],
         false
       ]
@@ -3728,7 +5353,10 @@
           "9+"
         ],
         [
-          "Pogo Stick"
+          [
+            "Pogo Stick",
+            "pogo-active"
+          ]
         ],
         false
       ],
@@ -3746,10 +5374,22 @@
           "8+"
         ],
         [
-          "Diving Catch",
-          "On The Ball",
-          "Pogo Stick",
-          "Very Long Legs"
+          [
+            "Diving Catch",
+            "diving-catch-active"
+          ],
+          [
+            "On The Ball",
+            "on-the-ball-active"
+          ],
+          [
+            "Pogo Stick",
+            "pogo-active"
+          ],
+          [
+            "Very Long Legs",
+            "very-long-legs-active"
+          ]
         ],
         false
       ],
@@ -3767,10 +5407,22 @@
           "9+"
         ],
         [
-          "Diving Tackle",
-          "Hit and Run",
-          "Jump Up",
-          "Pogo Stick"
+          [
+            "Diving Tackle",
+            "diving-tackle-active"
+          ],
+          [
+            "Hit and Run",
+            "hit-and-run-active"
+          ],
+          [
+            "Jump Up",
+            "jump-up-active"
+          ],
+          [
+            "Pogo Stick",
+            "pogo-active"
+          ]
         ],
         false
       ],
@@ -3788,11 +5440,26 @@
           "10+"
         ],
         [
-          "Bone Head",
-          "Loner (4+)",
-          "Mighty Blow",
-          "Prehensile Tail",
-          "Thick Skull"
+          [
+            "Bone Head",
+            "bone-head-passive"
+          ],
+          [
+            "Loner (4+)",
+            "loner-x-passive"
+          ],
+          [
+            "Mighty Blow",
+            "mighty-blow-active"
+          ],
+          [
+            "Prehensile Tail",
+            "prehensile-tail-active"
+          ],
+          [
+            "Thick Skull",
+            "thick-skull-passive"
+          ]
         ],
         true
       ]
