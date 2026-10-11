@@ -18,14 +18,15 @@
   <main class="shell">
     <section class="hero">
       <div><div class="eyebrow"><span class="eyebrow-line"></span> THE DUGOUT / 팀 구성</div><h1>승리는 <em>로스터</em>에서<br>시작된다.</h1><p>선수를 영입하고, 금고를 계산하고, 다음 킥오프를 준비하세요.</p></div>
-      <div class="hero-stamp"><span>COACH'S</span><strong>PLAYBOOK</strong><span>SEASON 2020</span></div>
+      <div class="hero-stamp"><span>COACH'S</span><strong>PLAYBOOK</strong><span>SEASON 2025</span></div>
     </section>
 
     <div class="workspace">
       <section class="main-column">
         <div class="panel setup-panel">
-          <div class="panel-head"><div><span class="section-index">01 / TEAM SETUP</span><h2>팀 설정</h2></div><span class="rules-badge">BB2020 기본 규칙</span></div>
-          <div class="setup-grid"><label>팀 이름<input id="team-name" maxlength="40" placeholder="예: 올드 월드 레이븐스" autocomplete="off"></label><label>종족<select id="team-select"></select></label><label>시작 예산<select id="budget-select"><option value="1000000">1,000,000 gp · 리그 기본</option><option value="1100000">1,100,000 gp</option><option value="1200000">1,200,000 gp</option><option value="1500000">1,500,000 gp</option></select></label></div>
+          <div class="panel-head"><div><span class="section-index">01 / TEAM SETUP</span><h2>팀 설정</h2></div><span class="rules-badge">BB2025 · 31개 팩션</span></div>
+          <div class="setup-grid"><label>팀 이름<input id="team-name" maxlength="40" placeholder="예: 올드 월드 레이븐스" autocomplete="off"></label><label>팩션<select id="team-select"></select></label><label>시작 예산<select id="budget-select"><option value="1000000">1,000,000 gp · 리그 기본</option><option value="1100000">1,100,000 gp</option><option value="1200000">1,200,000 gp</option><option value="1500000">1,500,000 gp</option></select></label></div>
+          <div class="team-meta" id="team-meta"></div>
         </div>
 
         <div class="panel players-panel">
@@ -46,10 +47,11 @@
 
         <div class="status-card" id="status-card"><div class="status-icon" id="status-icon">!</div><div><strong id="status-title">로스터를 구성하세요</strong><p id="status-detail">경기를 시작하려면 선수가 최소 11명 필요합니다.</p></div></div>
         <button class="print-btn" id="print-btn">로스터 인쇄 <span>↗</span></button>
-        <p class="footnote">팬 제작 보조 도구 · Blood Bowl 2020 시작 로스터 기준. 최종 규칙과 팀 목록은 공식 자료를 확인하세요.</p>
+        <p class="footnote">팬 제작 보조 도구 · Blood Bowl 2025 시작 로스터 기준. 팀 정보 출처: <a href="https://bloodbowlbase.ru/bb2025/teams/" target="_blank" rel="noopener">Blood Bowl Base</a>, <a href="https://bbroster.com/new-team" target="_blank" rel="noopener">BB Roster</a>. Slann은 BB Roster의 NAF 팀입니다.</p>
       </aside>
     </div>
   </main>
+  <script src="teams.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
