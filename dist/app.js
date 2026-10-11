@@ -36,7 +36,7 @@ function normalize(raw) {
     const pos = allowed.get(item.pos); if (!pos || players.length >= 16 || (counts[item.pos]||0) >= pos[2]) continue;
     if(pos[7] && TEAMS[team].bigGuyMax && players.filter(x=>allowed.get(x.pos)?.[7]).length>=TEAMS[team].bigGuyMax) continue;
     counts[item.pos] = (counts[item.pos]||0)+1;
-    players.push({id:crypto.randomUUID(),pos:item.pos,name:String(item.name||'').slice(0,32)});
+    players.push({id:crypto.randomUUID(),pos:item.pos});
   }
   const clamp=(n,max)=>Math.min(max,Math.max(0,Number.parseInt(n,10)||0));
   const st=raw.staff||{};
@@ -64,7 +64,7 @@ function openSkill(id){
 function renderRoster(){
   $('player-count-title').textContent=`${state.players.length} / 16`;$('roster-pill').textContent=`${state.players.length}명`;
   $('empty-roster').hidden=state.players.length>0;
-  $('roster-body').innerHTML=state.players.map((p,i)=>`<tr><td>${String(i+1).padStart(2,'0')}</td><td><input class="player-name" data-name="${p.id}" value="${escapeHTML(p.name)}" placeholder="선수 이름" maxlength="32" aria-label="${i+1}번 선수 이름"></td><td>${position(p.pos)[1]}</td><td>${money(position(p.pos)[3])}</td><td><button class="remove-btn" data-remove="${p.id}" aria-label="${i+1}번 선수 삭제">×</button></td></tr>`).join('');
+  $('roster-body').innerHTML=state.players.map((p,i)=>`<tr><td>${String(i+1).padStart(2,'0')}</td><td>${escapeHTML(position(p.pos)[1])}</td><td>${money(position(p.pos)[3])}</td><td><button class="remove-btn" data-remove="${p.id}" aria-label="${i+1}번 선수 삭제">×</button></td></tr>`).join('');
 }
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderStaff(){
@@ -133,15 +133,14 @@ document.addEventListener('click',e=>{
   const skill=e.target.closest('[data-skill]');if(skill){openSkill(skill.dataset.skill);return}
   const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
   const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
-  const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id,name:''});render();return}
+  const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id});render();return}
   const rem=e.target.closest('[data-remove]');if(rem){state.players=state.players.filter(p=>p.id!==rem.dataset.remove);render();return}
   const step=e.target.closest('[data-step]');if(step){const key=step.dataset.step,max=key==='rerolls'?8:key==='apothecary'?1:key==='fans'?3:6,min=key==='fans'?1:0;state.staff[key]=Math.min(max,Math.max(min,state.staff[key]+Number(step.dataset.delta)));render()}
 });
 $('skill-close').addEventListener('click',()=>$('skill-dialog').close());
 $('skill-dialog').addEventListener('click',e=>{if(e.target===$('skill-dialog'))$('skill-dialog').close()});
-document.addEventListener('input',e=>{if(e.target.matches('[data-name]')){const p=state.players.find(p=>p.id===e.target.dataset.name);if(p){p.name=e.target.value;save()}}});
 $('reset-btn').addEventListener('click',()=>{if(state.players.length&&!confirm('현재 로스터를 지우고 새로 시작할까요?'))return;state=fresh();draft={team:state.team,name:'',budget:state.budget,league:state.league};render();setStage('selection')});
-$('export-btn').addEventListener('click',()=>{const output={ruleset:'Blood Bowl 2025',...state,players:state.players.map(({pos,name})=>({pos,name}))};const blob=new Blob([JSON.stringify(output,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(state.name.trim().replace(/[^\p{L}\p{N}_-]+/gu,'-')||'blood-bowl-roster')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
+$('export-btn').addEventListener('click',()=>{const output={ruleset:'Blood Bowl 2025',...state,players:state.players.map(({pos})=>({pos}))};const blob=new Blob([JSON.stringify(output,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(state.name.trim().replace(/[^\p{L}\p{N}_-]+/gu,'-')||'blood-bowl-roster')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
 $('import-btn').addEventListener('click',()=>$('import-file').click());
 $('import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!TEAMS[data.team]||!Array.isArray(data.players))throw Error('형식 오류');if(state.players.length&&!confirm('현재 로스터를 불러온 파일로 교체할까요?'))return;state=normalize(data);render();setStage('builder')}catch{alert('유효한 로스터 JSON 파일을 불러오지 못했습니다.')}finally{e.target.value=''}});
 $('print-btn').addEventListener('click',()=>window.print());
