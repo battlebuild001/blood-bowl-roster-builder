@@ -261,7 +261,7 @@ document.addEventListener('click',e=>{
   const category=e.target.closest('[data-skill-category]');if(category){skillCategory=category.dataset.skillCategory;renderSkillResults();return}
   const dictionarySkill=e.target.closest('[data-dictionary-skill]');if(dictionarySkill){selectedSkillId=dictionarySkill.dataset.dictionarySkill;renderSkillDetail();if(window.innerWidth<=800)document.querySelector('.dictionary-detail')?.scrollIntoView({block:'start',behavior:'smooth'});return}
   const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
-  const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
+  const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();if(window.innerWidth<=800)document.querySelector('.selection-card')?.scrollIntoView({block:'start',behavior:'smooth'});return}
   const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id});render();return}
   const subtract=e.target.closest('[data-subtract]');if(subtract){const index=state.players.findLastIndex(p=>p.pos===subtract.dataset.subtract);if(index<0)return;state.players.splice(index,1);render();return}
   const rem=e.target.closest('[data-remove]');if(rem){state.players=state.players.filter(p=>p.id!==rem.dataset.remove);render();return}
