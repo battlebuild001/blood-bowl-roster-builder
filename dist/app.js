@@ -107,18 +107,54 @@ function render(){
   renderPositions();renderRoster();renderStaff();renderBudget();save();
 }
 let stage = localStorage.getItem(UI_KEY) || (hadSavedRoster ? 'builder' : 'selection');
+let referenceFrom = localStorage.getItem('blood-bowl-reference-return') || 'builder';
+let guideTab = localStorage.getItem('blood-bowl-guide-tab') || 'rules';
+let ruleChapter = 0;
+let tutorialStep = 0;
 let draft = {team:state.team,name:state.name,budget:state.budget,league:state.league};
 const selectedTiers = new Set([1,2,3,4]);
 let includeNAF = true;
 let searchTerm = '';
 function setStage(next){
   stage=next;localStorage.setItem(UI_KEY,next);
-  $('selection-screen').hidden=next!=='selection';$('builder-screen').hidden=next!=='builder';$('final-screen').hidden=next!=='final';
+  $('selection-screen').hidden=next!=='selection';$('builder-screen').hidden=next!=='builder';$('final-screen').hidden=next!=='final';$('reference-screen').hidden=next!=='reference';
   document.body.classList.toggle('picking',next==='selection');
   document.body.classList.toggle('finalized',next==='final');
+  document.body.classList.toggle('reading',next==='reference');
   if(next==='selection')renderPicker();
   if(next==='final')renderFinal();
+  if(next==='reference')renderReference();
   window.scrollTo({top:0,behavior:'auto'});
+}
+function openReference(tab){
+  if(stage!=='reference'){
+    referenceFrom=stage;
+    localStorage.setItem('blood-bowl-reference-return',referenceFrom);
+  }
+  guideTab=tab;
+  localStorage.setItem('blood-bowl-guide-tab',guideTab);
+  setStage('reference');
+}
+function sourceLink(url){return `<a class="guide-source" href="${url}" target="_blank" rel="noopener">BB2025 원문 보기 ↗</a>`}
+function renderReference(){
+  const tabs=[['rules','룰북'],['quick','퀵시트'],['tutorial','튜토리얼']];
+  $('reference-tabs').innerHTML=tabs.map(([id,label])=>`<button type="button" role="tab" data-guide="${id}" aria-selected="${guideTab===id}" class="${guideTab===id?'active':''}">${label}</button>`).join('');
+  if(guideTab==='rules')renderRulebook();
+  else if(guideTab==='quick')renderQuicksheet();
+  else renderTutorial();
+}
+function renderRulebook(){
+  const chapter=GUIDE.chapters[ruleChapter];
+  $('reference-content').innerHTML=`<div class="rules-layout"><aside class="rules-toc"><div class="section-index">CONTENTS / 10 CHAPTERS</div>${GUIDE.chapters.map((item,index)=>`<button type="button" data-rule-chapter="${index}" class="${index===ruleChapter?'active':''}"><span>${String(index+1).padStart(2,'0')}</span>${escapeHTML(item.title)}</button>`).join('')}</aside><article class="guide-article"><div class="guide-kicker">${escapeHTML(chapter.tag)}</div><h2>${escapeHTML(chapter.title)}</h2><p class="guide-lead">${escapeHTML(chapter.lead)}</p>${chapter.points.map(([title,body])=>`<section class="guide-point"><h3>${escapeHTML(title)}</h3><p>${escapeHTML(body)}</p></section>`).join('')}<div class="guide-article-foot">${sourceLink(chapter.source)}<span>${ruleChapter+1} / ${GUIDE.chapters.length}</span></div></article></div>`;
+}
+function quickTable(title,rows,source){return `<section class="quick-card"><div class="quick-card-head"><h3>${title}</h3>${source?sourceLink(source):''}</div><div class="quick-rows">${rows.map(([key,value])=>`<div><strong>${escapeHTML(key)}</strong><span>${escapeHTML(value)}</span></div>`).join('')}</div></section>`}
+function renderQuicksheet(){
+  const q=GUIDE.quick,src=q.source;
+  $('reference-content').innerHTML=`<div class="quick-intro"><span class="section-index">MATCHDAY / AT A GLANCE</span><h2>경기 중 한눈에</h2><p>핵심 순서와 판정을 빠르게 확인하세요. 세부 예외는 원문을 참고하세요.</p></div><div class="quick-grid">${quickTable('경기 흐름',q.flow,src+'#sequence-of-play')}${quickTable('선수 행동',q.actions,src+'#player-activations')}${quickTable('블록 주사위',q.block,src+'#block-action')}${quickTable('부상 판정 · 2D6',q.injury,src+'#risking-injury')}${quickTable('날씨 · 2D6',q.weather,src+'#weather-table')}${quickTable('킥오프 이벤트 · 2D6',q.kickoff,src+'#kick-off-event-table')}<section class="quick-card quick-turnover"><div class="quick-card-head"><h3>턴오버 확인</h3>${sourceLink(src+'#the-turnover')}</div><ul>${q.turnover.map(item=>`<li>${escapeHTML(item)}</li>`).join('')}</ul></section></div>`;
+}
+function renderTutorial(){
+  const item=GUIDE.tutorial[tutorialStep],total=GUIDE.tutorial.length;
+  $('reference-content').innerHTML=`<div class="tutorial-layout"><aside class="tutorial-steps"><div class="section-index">FIRST GAME / ${total} STEPS</div>${GUIDE.tutorial.map((step,index)=>`<button type="button" data-tutorial-step="${index}" class="${index===tutorialStep?'active':''}"><span>${String(index+1).padStart(2,'0')}</span>${escapeHTML(step.title)}</button>`).join('')}</aside><article class="tutorial-card"><div class="tutorial-progress"><span>STEP ${String(tutorialStep+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}</span><div><i style="width:${(tutorialStep+1)/total*100}%"></i></div></div><div class="guide-kicker">${escapeHTML(item.tag)}</div><h2>${escapeHTML(item.title)}</h2><p class="guide-lead">${escapeHTML(item.goal)}</p><ol>${item.steps.map(step=>`<li>${escapeHTML(step)}</li>`).join('')}</ol><div class="tutorial-example"><strong>연습 포인트</strong><p>${escapeHTML(item.example)}</p></div><div class="tutorial-foot">${sourceLink(item.source)}<div><button type="button" data-tutorial-move="-1" ${tutorialStep===0?'disabled':''}>← 이전</button><button type="button" data-tutorial-move="1" ${tutorialStep===total-1?'disabled':''}>다음 →</button></div></div></article></div>`;
 }
 function renderPicker(){
   $('tier-filters').innerHTML=[1,2,3,4].map(n=>`<button class="tier-filter ${selectedTiers.has(n)?'active':''}" data-tier="${n}" aria-pressed="${selectedTiers.has(n)}" aria-label="등급 ${n}">${['I','II','III','IV'][n-1]}</button>`).join('');
@@ -150,10 +186,15 @@ $('change-team-btn').addEventListener('click',()=>{draft={team:state.team,name:s
 $('confirm-roster-btn').addEventListener('click',()=>{if(canConfirm())setStage('final')});
 $('final-edit-btn').addEventListener('click',()=>setStage('builder'));
 $('final-print-btn').addEventListener('click',()=>window.print());
+$('reference-return-btn').addEventListener('click',()=>setStage(referenceFrom==='reference'?'builder':referenceFrom));
 $('team-name').addEventListener('input',e=>{state.name=e.target.value;save()});
 $('budget-select').addEventListener('change',e=>{state.budget=Number(e.target.value);render()});
 document.addEventListener('click',e=>{
   const skill=e.target.closest('[data-skill]');if(skill){openSkill(skill.dataset.skill);return}
+  const guide=e.target.closest('[data-guide]');if(guide){openReference(guide.dataset.guide);return}
+  const chapter=e.target.closest('[data-rule-chapter]');if(chapter){ruleChapter=Number(chapter.dataset.ruleChapter);renderReference();return}
+  const tutorial=e.target.closest('[data-tutorial-step]');if(tutorial){tutorialStep=Number(tutorial.dataset.tutorialStep);renderReference();return}
+  const tutorialMove=e.target.closest('[data-tutorial-move]');if(tutorialMove){tutorialStep=Math.min(GUIDE.tutorial.length-1,Math.max(0,tutorialStep+Number(tutorialMove.dataset.tutorialMove)));renderReference();return}
   const tier=e.target.closest('[data-tier]');if(tier){const n=Number(tier.dataset.tier);selectedTiers.has(n)?selectedTiers.delete(n):selectedTiers.add(n);renderPicker();return}
   const faction=e.target.closest('[data-faction]');if(faction){draft.team=faction.dataset.faction;draft.league=TEAMS[draft.team].leagues[0];renderPicker();return}
   const add=e.target.closest('[data-add]');if(add){const id=add.dataset.add,p=position(id);if(!p||!canAdd(p))return;state.players.push({id:crypto.randomUUID(),pos:id});render();return}
