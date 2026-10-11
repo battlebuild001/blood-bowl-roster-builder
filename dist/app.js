@@ -64,7 +64,7 @@ function openSkill(id){
 function renderRoster(){
   $('player-count-title').textContent=`${state.players.length} / 16`;$('roster-pill').textContent=`${state.players.length}명`;
   $('empty-roster').hidden=state.players.length>0;
-  $('roster-body').innerHTML=state.players.map((p,i)=>`<tr><td>${String(i+1).padStart(2,'0')}</td><td>${escapeHTML(position(p.pos)[1])}</td><td>${money(position(p.pos)[3])}</td><td><button class="remove-btn" data-remove="${p.id}" aria-label="${i+1}번 선수 삭제">×</button></td></tr>`).join('');
+  $('roster-body').innerHTML=state.players.map((player,i)=>{const p=position(player.pos);const stats=p[5].map((value,index)=>`<span><small>${['MA','ST','AG','PA','AV'][index]}</small>${escapeHTML(value)}</span>`).join('');const skills=p[6].length?p[6].map(([name,id])=>`<button type="button" class="skill-chip" data-skill="${id}" aria-label="${escapeHTML(name)} 규칙 보기">${escapeHTML(name)}</button>`).join(''):'<span class="no-skills">—</span>';return `<tr><td>${String(i+1).padStart(2,'0')}</td><td class="roster-position">${escapeHTML(p[1])}</td><td><div class="roster-stats">${stats}</div></td><td><div class="roster-skills">${skills}</div></td><td class="roster-price">${money(p[3])}</td><td><button class="remove-btn" data-remove="${player.id}" aria-label="${i+1}번 선수 삭제">×</button></td></tr>`}).join('');
 }
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderStaff(){
